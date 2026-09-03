@@ -1,5 +1,7 @@
 Your tasks is to create a website containing 4 pages  
-Page content is your choice, but make 1 page empty or almost empty
+Page content is your choice, as well as design,  
+Make 1 page empty or almost empty ( containing only navbar and footer )
+So, your tasks is - 3 normal pages and 1 empty;
 
 your website must have:
   1. navbar - always sticked to the top
