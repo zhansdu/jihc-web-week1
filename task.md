@@ -13,9 +13,11 @@ your website must have:
   7. a table showing all registered people
 
 You may use bootstrap or tailwind  
-Don't do vibe coding - your tasks will be checked offline and I will be very "Qatal"
+Don't do vibe coding - your tasks will be checked offline and we will be very "Qatal"
 
 After you're done - fork this repository and create a PR ( pull request )  
 Try your best to write DRY ( don't repeat yourself ) code
 
-If you have questions - my telegram is @zhansdu
+If you have questions - feel free to ask them
+Zhan Zhaksylyk - telelgram: @ZhanSDU
+Almaz Anarbekov - telegram: @almazanarbek
