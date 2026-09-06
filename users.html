@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a class="nav-box" href="home.html">Go Homepage</a>
+            <div class="nav-links">
+                <a href="home.html" class="btn">Home</a>
+                <a href="register.html" class="btn">Registration</a>
+                <a href="users.html" class="btn">Users</a>
+                <a href="empty.html" class="btn">Empty</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <h2>Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>User name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="table"></tbody>
+        </table>
+    </main>
+    <footer>
+        <p>JIHC © 2026</p>
+    </footer>
+    <script>
+        function loadUsers() {
+            let users = JSON.parse(localStorage.getItem("users") || "[]");
+            if (!Array.isArray(users)) {
+                throw new Error("Invalid users list");
+            }
+            for (let user of users) {
+                if (!user || typeof user.name !== "string" || typeof user.email !== "string") {
+                    throw new Error("Invalid user");
+                }
+            }
+            return users;
+        }
+
+        let table = document.getElementById("table");
+
+        function showMessage(message) {
+            let cell = table.insertRow().insertCell();
+            cell.colSpan = 3;
+            cell.className = "text-center";
+            cell.textContent = message;
+        }
+
+        try {
+            let users = loadUsers();
+            if (users.length === 0) {
+                showMessage("No registered users.");
+            }
+            for (let i = 0; i < users.length; i++) {
+                let row = table.insertRow();
+                row.insertCell().textContent = i + 1;
+                row.insertCell().textContent = users[i].name;
+                row.insertCell().textContent = users[i].email;
+            }
+        } catch (error) {
+            showMessage("Cannot read users. Check browser storage.");
+        }
+    </script>
+</body>
+
+</html>
