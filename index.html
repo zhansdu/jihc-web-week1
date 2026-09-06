@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="imgs/knight.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <title>Chess</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+            background-image: 
+                linear-gradient(45deg, #ffffff 25%, transparent 25%),
+                linear-gradient(-45deg, #ffffff 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ffffff 75%),
+                linear-gradient(-45deg, transparent 75%, #ffffff 75%)
+            ;
+            background-size: 142.5px 142px;
+            background-position: 0 0, 0 71px, 71px -71px, -71px 0px;
+            background-color: rgb(235, 226, 235, 0.5);
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .navbar-aside {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .sign-btn {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background: radial-gradient(#d0a4d0, #f0c0f0);
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .sign-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .navbar-aside button:not(.sign-btn) {
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            padding: 8px 4px;
+            position: relative;
+        }
+
+        .navbar-aside button:not(.sign-btn) {
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes underline-slide {
+            from { transform: scaleX(0); }
+            to   { transform: scaleX(1); }
+        }
+
+        .navbar-aside button:not(.sign-btn)::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: black;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        .navbar-aside button:not(.sign-btn):hover::before {
+            animation: underline-slide 0.3s ease forwards;
+        }
+
+        .navbar-aside button:not(.sign-btn).active::before {
+            transform: scaleX(1);
+        }
+
+        .home-img {
+            width: 40px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .home-img:hover {
+            transform: scale(1.05) skewX(3deg);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .img-avatar {
+            width: 25px;
+            border: 2px solid black;
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        main {
+            padding: 100px 300px 0px 300px;
+        }
+
+        .main-text {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 45px;
+        }
+
+        .info-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+        }
+
+        .history {
+            display: flex;
+            flex-direction: column;
+            padding: 50px 0px 0px 0px;
+            gap: 20px;
+        }
+
+        .his {
+            display: flex;
+            gap: 50px;
+            padding: 30px 0px;
+            border-bottom: 1px solid black;
+        }
+
+        .his-p {
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+
+        .his-aside {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .his-h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .his-p-aside {
+            margin: 0;
+            padding: 0px;
+        }
+        
+        .the-big-trio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tbt-text {
+            font-family: 'Lora', serif;
+            text-align: center;
+            font-size: 45px;
+        }
+
+        .imgs {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-top: 40px;
+        }
+
+        .person {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 350px;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        .tactics {
+            display: flex;
+            flex-direction: column;
+            margin-top: 400px;
+            gap: 50px;
+        }
+
+        .t {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 150px;
+        }
+
+        .t:nth-child(2) {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        .t-img {
+            width: 400px;
+        }
+
+        .footer {
+            background-color: rgb(235, 226, 235, 0.5);
+            border-top: 1px solid rgb(0, 0, 0, 0.1);
+            padding: 40px 20px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            width: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            font-size: 16px;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.6;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+        }
+
+        .try-sect {
+            padding: 50px;
+            text-align: center;
+        }
+        
+        .try {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <section class="navbar">
+        <a href="index.html"><img src="imgs/knight.png" class="home-img"></a>
+        <aside class="navbar-aside">
+            <a href="index.html"><button class="home-btn active">Home</button></a>
+            <a href="table.html"><button class="users-btn">Users</button></a>
+            <a href="about.html"><button class="about-btn">About</button></a>
+            <a href="signup.html"><button class="sign-btn">Sign up</button></a>
+            <img src="imgs/icons8-pawn-50.png" class="img-avatar hidden" id="img-avatar">
+        </aside>
+    </section>
+    <main>
+        <section class="main-texts">
+            <h1 class="main-text">Every game ever played starts from the same sixty-four squares</h1>
+            <p class="info-text">A record of how the game got here — the openings, the players, and the moves that changed how it's understood.</p>
+        </section>
+        <section class="history">
+            <div class="his">
+                <p class="his-p">1475</p>
+                <aside class="his-aside">
+                    <h3 class="his-h3">The Queen Takes Flight</h3>
+                    <p class="his-p-aside">The queen and bishop gain their modern range of movement in Spain and Italy — the single biggest rule change in the game's history</p>
+                </aside>
+            </div>
+            <div class="his">
+                <p class="his-p">1849</p>
+                <aside class="his-aside">
+                    <h3 class="his-h3">A Standard Is Set</h3>
+                    <p class="his-p-aside">The Staunton chess set is patented, becoming the standard piece design still used in tournaments today</p>
+                </aside>
+            </div>
+            <div class="his">
+                <p class="his-p">1972</p>
+                <aside class="his-aside">
+                    <h3 class="his-h3">The Match of the Century</h3>
+                    <p class="his-p-aside">Bobby Fischer defeats Boris Spassky, ending decades of Soviet dominance amid the Cold War</p>
+                </aside>
+            </div>
+            <div class="his">
+                <p class="his-p">1997</p>
+                <aside class="his-aside">
+                    <h3 class="his-h3">Machine Over Man</h3>
+                    <p class="his-p-aside">Deep Blue (IBM) defeats reigning world champion Garry Kasparov — the first time a computer beat a champion under standard tournament conditions</p>
+                </aside>
+            </div>
+            <div class="his">
+                <p class="his-p">2017</p>
+                <aside class="his-aside">
+                    <h3 class="his-h3">Learning From Scratch</h3>
+                    <p class="his-p-aside">AlphaZero defeats Stockfish after training itself from scratch in just hours, reshaping how the game is studied</p>
+                </aside>
+            </div>
+        </section>
+        <section class="the-big-trio">
+            <h1 class="tbt-text">The Big Trio</h1>
+            <div class="imgs">
+                <img src="imgs/Bobby Fischer 9.jpeg" class="person">
+                <img src="imgs/kasparov.jpg" class="person">
+                <img src="imgs/Play Live Challenge 2016 - Magnus Carlsen.jpeg" class="person">
+            </div>
+        </section>
+        <section class="tactics">
+            <div class="t">
+                <img src="imgs/pinchess.png" class="t-img">
+                <aside class="t-aside">
+                    <h3 class="t-text-h3">Pin</h3>
+                    <p class="t-text-p">A piece is attacked, but it can't move because doing so would expose a more valuable piece behind it (often the king) to attack. An "absolute pin" is against the king — the pinned piece legally cannot move at all. A "relative pin" is against a less valuable piece — it can move, but doing so would lose material.</p>
+                </aside>
+            </div>
+            <div class="t">
+                <img src="imgs/skewerchess.png" class="t-img">
+                <aside class="t-aside">
+                    <h3 class="t-text-h3">Skewer</h3>
+                    <p class="t-text-p">The reverse of a pin. A valuable piece is attacked and forced to move, exposing a less valuable piece behind it to be captured. Think of it as a pin flipped — high-value piece in front, lower-value piece behind, both on the same line.</p>
+                </aside>
+            </div>
+            <div class="t">
+                <img src="imgs/forkchess.png" class="t-img">
+                <aside class="t-aside">
+                    <h3 class="t-text-h3">Fork</h3>
+                    <p class="t-text-p">A single piece attacks two (or more) enemy pieces at the same time, so the opponent can only save one. Knights are especially good at this because of their unusual movement pattern — a knight fork on a king and queen is one of the most common tactical wins in chess.</p>
+                </aside>
+            </div>
+        </section>
+        <section class="try-sect">
+            <p class="want">Want to play and learn more about chess? <a href="https://www.chess.com/home" class="try">Try it out.</a></p>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="imgs/knight.png" class="footer-logo">
+            <nav class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="table.html">Users</a>
+                <a href="about.html">About</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 Chess. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+        if (isLoggedIn) {
+            document.querySelector('.sign-btn').classList.add('hidden');
+            document.getElementById('img-avatar').classList.remove('hidden');
+        }
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const personAngles = [-15, 10, -6];
+        const personOffsets = [
+          { x: -60, y: -40 },
+          { x: 40, y: -60 },
+          { x: -30, y: 30 }
+        ];
+
+        gsap.utils.toArray(".person").forEach((el, i) => {
+          gsap.set(el, {
+            x: personOffsets[i].x,
+            y: personOffsets[i].y,
+            rotate: personAngles[i],
+            zIndex: i
+          });
+        });
+
+        const personTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".imgs",
+            start: "top 40%",
+            end: "+=200",
+            scrub: 0.2
+          }
+        });
+
+        gsap.utils.toArray(".person").forEach((el, i) => {
+          personTl.from(el, {
+            scale: 0,
+            opacity: 0,
+            rotate: personAngles[i] + 40,
+            ease: "power1.out"
+          }, i);
+        });
+
+        document.querySelector('.footer-logo').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
+        })
+    </script>
+</body>
+</html>

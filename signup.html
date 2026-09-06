@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="imgs/knight.png">
+    <title>Chess</title>
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+            background-image: 
+                linear-gradient(45deg, #ffffff 25%, transparent 25%),
+                linear-gradient(-45deg, #ffffff 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ffffff 75%),
+                linear-gradient(-45deg, transparent 75%, #ffffff 75%)
+            ;
+            background-size: 142.5px 142px;
+            background-position: 0 0, 0 71px, 71px -71px, -71px 0px;
+            background-color: rgb(235, 226, 235, 0.5);
+        }
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            width: 300px;
+            padding: 80px 40px;
+            font-family: 'Inter', sans-serif;
+            border-radius: 20px;
+            background-color: rgba(189, 199, 207, 0.2);
+            border: 1px solid rgb(0, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .img-avatar {
+            width: 100px;
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            top: -50px;
+            filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.5));
+        }
+
+        .signup-text {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        .block-div {
+            width: 300px;
+            height: 30px;
+            padding: 10px 5px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            transition: 0.1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .block-div:focus-within {
+            border-color: black;
+        }
+
+        .block-img {
+            width: 25px;
+            padding: 10px;
+            margin-right: auto;
+        }
+
+        .block-input {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: none;
+            font-size: 16px;
+        }
+
+        .eye-img {
+            width: 20px;
+            padding: 10px;
+            margin-left: auto;
+            cursor: pointer;
+        }
+
+        .signup-btn {
+            font-size: 20px;
+            width: 100%;
+            padding: 12px 0px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .signup-btn:hover {
+            opacity: 0.8;
+        }
+
+        .signup-btn:active {
+            opacity: 0.9;
+        }
+
+    </style>
+</head>
+<body>
+    <section class="login-container">
+        <img src="imgs/knight.png" class="img-avatar">
+        <p class="signup-text">SIGN UP</p>
+        <div class="block-div" id="block-one">
+            <img src="imgs/icons8-user-50.png" class="block-img">
+            <input type="text" placeholder="Username" class="block-input" id="username-input">
+        </div>
+        <div class="block-div" id="block-two">
+            <img src="imgs/icons8-email-50.png" class="block-img">
+            <input type="text" placeholder="Email" class="block-input" id="email-input">
+        </div>
+        <div class="block-div" id="block-three">
+            <img src="imgs/icons8-password-50.png" class="block-img">
+            <input type="password" placeholder="Password" class="block-input" id="password-input">
+            <img src="imgs/icons8-eye-50.png" class="eye-img">
+        </div>
+        <button class="signup-btn">SIGN UP</button>
+    </section>
+    <script>
+        document.querySelectorAll('.block-input').forEach(input => {
+            input.addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.querySelectorAll('.block-div').forEach(b => b.style.border = '1px solid transparent');
+                input.closest('.block-div').style.border = '1px solid black';
+            });
+        });
+
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.block-div').forEach(b => b.style.border = '1px solid transparent');
+        });
+
+        const eyeIcon = document.querySelector('.eye-img')
+        const password = document.getElementById('password-input')
+        eyeIcon.addEventListener('click', function() {
+            if (password.type === 'password') {
+                password.type = 'text';
+                eyeIcon.src = 'imgs/icons8-show-50.png'
+            } else {
+                password.type = 'password';
+                eyeIcon.src = 'imgs/icons8-eye-50.png'
+            }
+        })
+
+        document.querySelector('.signup-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username-input').value;
+            const email = document.getElementById('email-input').value;
+            const registeredDate = new Date().toLocaleDateString()
+
+            if (!username || !email) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            users.push({username, registeredDate});
+
+            localStorage.setItem('users', JSON.stringify(users));
+
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('currentUser', username);
+        
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
