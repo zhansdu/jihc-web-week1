@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: cursive;
+    background: lightpink;
+    color: #212529;
+}
+
+nav, footer {
+    background: #191919;
+    color: lightpink;
+}
+
+.container, .nav-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.container {
+    min-height: 64px;
+    justify-content: space-between;
+    margin: 10px 30px;
+}
+
+.nav-box {
+    color: lightpink;
+    font-size: 34px;
+    text-decoration: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    color: lightpink;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+button {
+    background: #212529;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #545d67;
+}
+
+button.white {
+    background: white;
+}
+
+main {
+    flex: 1;
+    padding: 15px 30px;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    color: black;
+    font-size: 34px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+}
+
+form {
+    max-width: 500px;
+    margin-top: 30px;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: 2px solid hotpink;
+}
+
+.modal {
+    width: 90%;
+    max-width: 400px;
+    max-height: 90vh;
+    padding: 24px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    color: #212529;
+    font-size: 24px;
+}
+
+.modal h2 {
+    font-size: 36px;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.modal input {
+    outline: 2px solid lightpink;
+}
+
+.modal input:focus {
+    outline-color: hotpink;
+}
+
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+table {
+    width: 100%;
+    margin-top: 24px;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #555;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+thead {
+    background: #212529;
+    color: lightpink;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.empty nav {
+    position: sticky;
+    top: 0;
+}
+
+.empty h2 {
+    font-size: 30px;
+}
+
+.empty footer {
+    font-size: 24px;
+}

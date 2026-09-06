@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a class="nav-box" href="home.html">Welcome Home</a>
+            <div class="nav-links">
+                <a href="home.html" class="btn" aria-current="page">Home</a>
+                <a href="register.html" class="btn">Registration</a>
+                <a href="users.html" class="btn">Users</a>
+                <a href="empty.html" class="btn">Empty</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="home">
+        <button id="modalBtn" class="btn" type="button" aria-haspopup="dialog">Login</button>
+    </main>
+
+    <dialog id="loginModal" class="modal" aria-labelledby="loginTitle">
+        <h2 id="loginTitle">Login</h2>
+        <form id="loginForm">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Email" autocomplete="username" required autofocus>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Password" autocomplete="current-password" required>
+            <p id="loginMessage" role="alert"></p>
+            <button class="btn white" type="submit">Submit</button>
+            <button id="closeBtn" class="btn white" type="button">Close</button>
+        </form>
+    </dialog>
+
+    <footer>
+        <p>JIHC © 2026</p>
+    </footer>
+
+    <script>
+        const modal = document.getElementById('loginModal');
+        const message = document.getElementById('loginMessage');
+        document.getElementById('modalBtn').onclick = function () {
+            message.textContent = '';
+            modal.showModal();
+        };
+        document.getElementById('closeBtn').onclick = function () {
+            modal.close();
+        };
+        document.getElementById('loginForm').onsubmit = function (event) {
+            event.preventDefault();
+            let email = document.getElementById('email').value.trim().toLowerCase();
+            let password = document.getElementById('password').value;
+            message.textContent = '';
+
+            if (!email || !password.trim()) {
+                message.textContent = 'Please enter your email and password.';
+                return;
+            }
+
+            try {
+                let users = JSON.parse(localStorage.getItem('users') || '[]');
+                if (!Array.isArray(users)) {
+                    throw new Error('Invalid users list');
+                }
+                for (let user of users) {
+                    if (user && typeof user.email === 'string' &&
+                        user.email.trim().toLowerCase() === email && user.password === password) {
+                        window.location.href = 'users.html';
+                        return;
+                    }
+                }
+                message.textContent = 'Incorrect email or password.';
+            } catch (error) {
+                message.textContent = 'Cannot read users. Check browser storage.';
+            }
+        };
+        modal.addEventListener('close', function () {
+            document.getElementById('password').value = '';
+        });
+    </script>
+</body>
+
+</html>
