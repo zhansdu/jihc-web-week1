@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations | Travel Agency</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="head">
+            <h1>Beautiful places around the world</h1>
+            <div class="right-head">
+                <p><a href="index.html">Home</a></p>
+                <p><a href="about.html">About</a></p>
+                <p><a href="destinations.html" class="active">Destinations</a></p>
+                <p><a href="gallery.html">Travelers</a></p>
+                <p><a href="#" id="openLoginBtn" class="btn-login">Login</a></p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="section-title">All Travel Destinations</h1>
+        <div class="cards-grid">
+            <div class="card">
+                <img src="image/switzerland.jpg" alt="Switzerland">
+                <div class="card-content">
+                    <h3>Switzerland Alps</h3>
+                    <p>Glacial peaks, scenic trains, and luxury chalets.</p>
+                    <span class="price">$2,850</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="image/bali.jpg" alt="Bali">
+                <div class="card-content">
+                    <h3>Bali Rainforest</h3>
+                    <p>Serene bamboo villas, waterfalls, and tropical beaches.</p>
+                    <span class="price">$1,950</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="image/japan.jpg" alt="Japan">
+                <div class="card-content">
+                    <h3>Kyoto Culture</h3>
+                    <p>Ancient temples, onsen springs, and traditional gardens.</p>
+                    <span class="price">$3,400</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="image/iceland.jpg" alt="Iceland">
+                <div class="card-content">
+                    <h3>Iceland Aurora</h3>
+                    <p>Ice caves, waterfalls, and midnight Northern Lights.</p>
+                    <span class="price">$3,150</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="image/safari.jpg" alt="Safari">
+                <div class="card-content">
+                    <h3>Tanzania Safari</h3>
+                    <p>Serengeti wildlife, hot air balloons, and safari camps.</p>
+                    <span class="price">$4,200</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="image/amalfi.jpg" alt="Amalfi">
+                <div class="card-content">
+                    <h3>Amalfi Coast</h3>
+                    <p>Cliffside villas, boat tours, and Mediterranean cuisine.</p>
+                    <span class="price">$2,900</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="authModal" class="modal">
+        <div class="modal-box">
+            <span id="closeModalBtn" class="close-modal">&times;</span>
+
+            <div class="auth-tabs-nav">
+                <button type="button" id="tabLoginBtn" class="auth-tab-btn active">Login</button>
+                <button type="button" id="tabRegisterBtn" class="auth-tab-btn">Register</button>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <input type="text" id="loginEmail" placeholder="Email or Username" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" class="btn-submit">Log In</button>
+            </form>
+
+            <form id="registerForm" class="auth-form" style="display: none;">
+                <input type="text" id="regName" placeholder="Full Name" required>
+                <input type="email" id="regEmail" placeholder="Email Address" required>
+                <input type="text" id="regDestination" placeholder="Dream Destination" required>
+                <input type="password" id="regPassword" placeholder="Create Password" required>
+                <button type="submit" id="regSubmitBtn" class="btn-submit">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Travel Agency. All rights reserved.</p>
+        <p>Beautiful Places Around The World</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
