@@ -1,0 +1,228 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+
+    <header class="fixed top-0 left-0 w-full h-[68px] bg-white border-b z-50">
+
+        <div class="max-w-7xl mx-auto h-full flex items-center px-5">
+
+            <a href="index.html" class="text-3xl font-bold">Kama</a>
+
+            <nav class="hidden md:flex gap-8 ml-auto mr-8">
+                <a href="index.html" class="hover:text-blue-500">Home</a>
+                <a href="register.html" class="text-blue-500">Registration</a>
+                <a href="users.html" class="hover:text-blue-500">Users</a>
+                <a href="empty.html" class="hover:text-blue-500">Empty page</a>
+            </nav>
+
+            <button onclick="openLogin()" class="bg-blue-200 text-white px-6 py-3 rounded-full">Sign in</button>
+
+            <button onclick="openMenu()" class="md:hidden ml-4 text-3xl">☰</button>
+
+        </div>
+
+    </header>
+
+
+    <div id="mobileMenu" class="hidden fixed top-0 left-0 w-full h-full bg-white z-[100]">
+
+        <div class="flex justify-between items-center h-[68px] px-5">
+
+            <div class="text-3xl font-bold">Kama</div>
+
+            <button onclick="closeMenu()" class="text-3xl">×</button>
+
+        </div>
+
+        <nav class="flex flex-col px-5 pt-8">
+            <a href="index.html" class="py-5 text-lg">Home</a>
+            <a href="register.html" class="py-5 text-lg">Registration</a>
+            <a href="users.html" class="py-5 text-lg">Users</a>
+            <a href="empty.html" class="py-5 text-lg">Empty page</a>
+        </nav>
+
+    </div>
+
+
+    <main class="flex-grow pt-[68px]">
+
+        <section class="min-h-[calc(100vh-68px)] flex items-center justify-center px-5 py-10">
+
+            <div class="bg-white w-full max-w-lg p-8 rounded-2xl shadow-sm border">
+
+                <h1 class="text-4xl font-bold mb-3">Registration</h1>
+
+                <p class="text-gray-500 mb-7">Create a new account.</p>
+
+                <form id="registerForm">
+
+                    <label class="block font-semibold mb-2">Name</label>
+
+                    <input id="name" type="text" placeholder="Your name" class="w-full border rounded-lg p-3 mb-5" required>
+
+                    <label class="block font-semibold mb-2">Email</label>
+
+                    <input id="email" type="email" placeholder="Your email" class="w-full border rounded-lg p-3 mb-5" required>
+
+                    <label class="block font-semibold mb-2">Password</label>
+
+                    <input id="password" type="password" placeholder="Your password" class="w-full border rounded-lg p-3 mb-6" required>
+
+                    <button type="submit" class="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800">Register</button>
+
+                    <p id="registerMessage" class="text-center mt-5"></p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="bg-white border-t py-6">
+
+        <div class="max-w-7xl mx-auto px-5 text-center text-gray-500">
+            © 2026 My Website
+        </div>
+
+    </footer>
+
+
+    <div id="loginModal" class="hidden fixed inset-0 bg-black/40 z-[200] items-center justify-center px-5">
+
+        <div class="bg-white w-full max-w-md rounded-2xl p-7">
+
+            <div class="flex justify-between mb-6">
+
+                <h2 class="text-3xl font-bold">Sign in</h2>
+
+                <button onclick="closeLogin()" class="text-3xl">×</button>
+
+            </div>
+
+            <input id="loginEmail" type="email" placeholder="Email" class="w-full border p-3 rounded-lg mb-4">
+
+            <input id="loginPassword" type="password" placeholder="Password" class="w-full border p-3 rounded-lg mb-4">
+
+            <button onclick="login()" class="w-full bg-black text-white p-3 rounded-lg">Sign in</button>
+
+            <p id="loginMessage" class="text-center mt-4"></p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function openMenu() {
+            document.getElementById("mobileMenu").classList.remove("hidden");
+        }
+
+        function closeMenu() {
+            document.getElementById("mobileMenu").classList.add("hidden");
+        }
+
+
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            let alreadyExists = users.some(function(user) {
+                return user.email == email;
+            });
+
+            if (alreadyExists) {
+
+                document.getElementById("registerMessage").innerText = "This email is already registered.";
+
+                return;
+            }
+
+
+            let user = {
+                name: name,
+                email: email,
+                password: password
+            };
+
+
+            users.push(user);
+
+            localStorage.setItem("users", JSON.stringify(users));
+
+            document.getElementById("registerMessage").innerText = "Registration successful!";
+
+            document.getElementById("registerForm").reset();
+
+        });
+
+
+        function openLogin() {
+
+            document.getElementById("loginModal").classList.remove("hidden");
+
+            document.getElementById("loginModal").classList.add("flex");
+
+            closeMenu();
+        }
+
+
+        function closeLogin() {
+
+            document.getElementById("loginModal").classList.add("hidden");
+
+        }
+
+
+        function login() {
+
+            let email = document.getElementById("loginEmail").value;
+
+            let password = document.getElementById("loginPassword").value;
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            let user = users.find(function(user) {
+
+                return user.email == email && user.password == password;
+
+            });
+
+
+            if (user) {
+
+                localStorage.setItem("loggedUser", JSON.stringify(user));
+
+                document.getElementById("loginMessage").innerText = "Login successful!";
+
+            } else {
+
+                document.getElementById("loginMessage").innerText = "Wrong email or password.";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
+

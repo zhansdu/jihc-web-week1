@@ -1,0 +1,200 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+
+<header class="fixed top-0 left-0 w-full h-[68px] bg-white border-b z-50">
+
+    <div class="max-w-7xl mx-auto h-full flex items-center px-5">
+
+        <a href="index.html" class="text-3xl font-bold">Kama</a>
+
+        <nav class="hidden md:flex items-center gap-8 ml-auto mr-8">
+            <a href="index.html" class="hover:text-blue-500">Home</a>
+            <a href="register.html" class="hover:text-blue-500">Registration</a>
+            <a href="users.html" class="hover:text-blue-500">Users</a>
+            <a href="empty.html" class="hover:text-blue-500">Empty page</a>
+        </nav>
+
+        <button id="loginButton" onclick="openLogin()" class="bg-blue-200 text-white px-6 py-3 rounded-full hover:bg-blue-300">Sign in</button>
+
+        <div id="userBox" class="hidden items-center gap-3 ml-auto">
+            <span id="userName" class="font-semibold"></span>
+
+            <button onclick="logout()" class="bg-gray-200 px-4 py-2 rounded-full">Log out</button>
+        </div>
+
+        <button onclick="openMenu()" class="md:hidden ml-4 text-3xl">☰</button>
+
+    </div>
+
+</header>
+
+
+<div id="mobileMenu" class="hidden fixed top-0 left-0 w-full h-full bg-white z-[100]">
+
+    <div class="h-[68px] flex items-center justify-between px-5">
+
+        <div class="text-3xl font-bold">stripe</div>
+
+        <button onclick="closeMenu()" class="text-3xl">×</button>
+
+    </div>
+
+    <nav class="flex flex-col px-5 pt-8">
+
+        <a href="index.html" class="py-5 text-lg">Home</a>
+        <a href="register.html" class="py-5 text-lg">Registration</a>
+        <a href="users.html" class="py-5 text-lg">Users</a>
+        <a href="empty.html" class="py-5 text-lg">Empty page</a>
+
+        <button onclick="openLogin()" class="bg-blue-200 text-white py-3 rounded-full mt-5">Sign in</button>
+
+    </nav>
+
+</div>
+
+
+<main class="flex-grow pt-[68px]">
+
+    <section class="min-h-[calc(100vh-68px)] flex items-center justify-center px-5">
+
+        <div class="max-w-3xl text-center">
+
+            <p class="text-blue-500 font-semibold mb-4">MY WEBSITE</p>
+
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Simple website</h1>
+
+            <a href="register.html" class="inline-block bg-black text-white px-7 py-3 rounded-full hover:bg-gray-800">Get started</a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="bg-white border-t py-6">
+
+    <div class="max-w-7xl mx-auto px-5 text-center text-gray-500">
+        © 2026 My Website
+    </div>
+
+</footer>
+
+
+<div id="loginModal" class="hidden fixed inset-0 bg-black/40 z-[200] items-center justify-center px-5">
+
+    <div class="bg-white w-full max-w-md rounded-2xl p-7 relative">
+
+        <button onclick="closeLogin()" class="absolute right-5 top-3 text-3xl text-gray-500">×</button>
+
+        <h2 class="text-3xl font-bold mb-2">Sign in</h2>
+
+        <p class="text-gray-500 mb-6">Enter your email and password</p>
+
+        <input id="loginEmail" type="email" placeholder="Email" class="w-full border p-3 rounded-lg mb-4">
+
+        <input id="loginPassword" type="password" placeholder="Password" class="w-full border p-3 rounded-lg mb-4">
+
+        <button onclick="login()" class="w-full bg-black text-white p-3 rounded-lg">Sign in</button>
+
+        <p id="loginMessage" class="text-center mt-4 text-sm"></p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function openMenu() {
+    document.getElementById("mobileMenu").classList.remove("hidden");
+}
+
+function closeMenu() {
+    document.getElementById("mobileMenu").classList.add("hidden");
+}
+
+function openLogin() {
+    document.getElementById("loginModal").classList.remove("hidden");
+    document.getElementById("loginModal").classList.add("flex");
+    closeMenu();
+}
+
+function closeLogin() {
+    document.getElementById("loginModal").classList.add("hidden");
+}
+
+function login() {
+
+    let email = document.getElementById("loginEmail").value;
+
+    let password = document.getElementById("loginPassword").value;
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    let foundUser = users.find(function(user) {
+        return user.email == email && user.password == password;
+    });
+
+    if (foundUser) {
+
+        localStorage.setItem("loggedUser", JSON.stringify(foundUser));
+
+        showUser(foundUser);
+
+        closeLogin();
+
+    } else {
+
+        document.getElementById("loginMessage").innerText = "User not found or wrong password.";
+
+    }
+
+}
+
+function showUser(user) {
+
+    document.getElementById("loginButton").classList.add("hidden");
+
+    document.getElementById("userBox").classList.remove("hidden");
+
+    document.getElementById("userBox").classList.add("flex");
+
+    document.getElementById("userName").innerText = user.name;
+
+}
+
+function logout() {
+
+    localStorage.removeItem("loggedUser");
+
+    document.getElementById("userBox").classList.add("hidden");
+
+    document.getElementById("loginButton").classList.remove("hidden");
+
+}
+
+let loggedUser = localStorage.getItem("loggedUser");
+
+if (loggedUser) {
+
+    let user = JSON.parse(loggedUser);
+
+    showUser(user);
+
+}
+
+</script>
+
+</body>
+</html>
+

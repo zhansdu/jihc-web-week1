@@ -1,0 +1,87 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empty Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white min-h-screen flex flex-col">
+
+    <header class="fixed top-0 left-0 w-full h-[68px] bg-white border-b z-50">
+
+        <div class="max-w-7xl mx-auto h-full flex items-center px-5">
+
+            <a href="index.html" class="text-3xl font-bold">Kama</a>
+
+            <nav class="hidden md:flex gap-8 ml-auto mr-8">
+                <a href="index.html" class="hover:text-blue-500">Home</a>
+                <a href="register.html" class="hover:text-blue-500">Registration</a>
+                <a href="users.html" class="hover:text-blue-500">Users</a>
+                <a href="empty.html" class="text-blue-500">Empty page</a>
+            </nav>
+
+            <button class="bg-blue-200 text-white px-6 py-3 rounded-full">Sign in</button>
+
+            <button onclick="openMenu()" class="md:hidden ml-4 text-3xl">☰</button>
+
+        </div>
+
+    </header>
+
+
+    <div id="mobileMenu" class="hidden fixed top-0 left-0 w-full h-full bg-white z-[100]">
+
+        <div class="flex justify-between items-center h-[68px] px-5">
+
+            <div class="text-3xl font-bold">Kama</div>
+
+            <button onclick="closeMenu()" class="text-3xl">×</button>
+
+        </div>
+
+        <nav class="flex flex-col px-5 pt-8">
+
+            <a href="index.html" class="py-5 text-lg">Home</a>
+            <a href="register.html" class="py-5 text-lg">Registration</a>
+            <a href="users.html" class="py-5 text-lg">Users</a>
+            <a href="empty.html" class="py-5 text-lg">Empty page</a>
+
+        </nav>
+
+    </div>
+
+
+    <main class="flex-grow pt-[68px]">
+    </main>
+
+
+    <footer class="bg-white border-t py-6">
+
+        <div class="max-w-7xl mx-auto px-5 text-center text-gray-500">
+            © 2026 My Website
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        function openMenu() {
+            document.getElementById("mobileMenu").classList.remove("hidden");
+        }
+
+
+        function closeMenu() {
+            document.getElementById("mobileMenu").classList.add("hidden");
+        }
+
+    </script>
+
+</body>
+
+</html>
+
