@@ -12,17 +12,10 @@ const closeRegisterModal = document.getElementById("closeRegisterModal");
 const closeLoginModal = document.getElementById("closeLoginModal");
 
 function getUsers() {
-    try {
-        const users = JSON.parse(localStorage.getItem(usersStorageKey));
+    const savedUsers = localStorage.getItem(usersStorageKey);
+    const users = savedUsers ? JSON.parse(savedUsers) : [];
 
-        if (Array.isArray(users)) {
-            return users;
-        }
-
-        return [];
-    } catch (error) {
-        return [];
-    }
+    return Array.isArray(users) ? users : [];
 }
 
 function saveUsers(users) {
