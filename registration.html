@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header style="width: 90%;padding: 20px 0;">
+      <span class="logo">Brillex</span>
+      <ul>
+        
+        <li><a href="index.html">Home</a></li>
+        <li> <a href="skills.html">Skills</a></li>
+        <li><a href="registration.html">Account</a></li>
+        <li><a href="empty.html">Blank</a></li>
+      </ul>
+      <button class="button">Let's Talk</button>
+    </header>
+  <section>
+    <h1>Join Brillex</h1>
+    
+    <div style="display: flex;gap: 20px;">
+      
+    
+    <div>
+      <h2>Registration</h2>
+      <div style="display: flex;
+      flex-direction: column;
+      gap: 20px; border: 1px solid black;width: 500px;padding: 20px;margin-top: 20px;">
+        
+       <form id="registerForm">
+          <label for="name">Full Name</label>
+        <input required id="name" type="text">
+        
+        
+          <label for="email">Email</label>
+        <input required id="email" type="email">
+          <label for="phone">Phone</label>
+        <input id="phone" type="number" required>
+        
+          <label for="password">Password</label>
+        <input required id="password" type="password">
+        
+
+        <button type="submit" class="button-reg" style="background-color: black;color: white;padding: 15px 0;width: 100%;margin-top: 20px;">Register</button>
+<p style="color: red; margin-top: 5px;" class="error"></p>
+       </form> 
+        
+          
+        
+        
+      </div>
+    </div>
+      <div>
+        <h2>Login</h2>
+         <div style="margin-top: 20px; padding: 20px;border: 1px solid black;width: 300px;">
+        <div style="display: flex;
+      flex-direction: column;
+      gap: 20px;">
+        
+       <form id="loginForm">
+        
+          <label for="emailLogin">Email</label>
+        <input required id="emailLogin" type="email">
+        
+        
+        
+          <label for="passwordLogin">Password</label>
+        <input required title="Пожалуйста, введите имя" id="passwordLogin" type="password">
+        
+          
+        <button  type="submit" class="button" style="margin-top: 15px;width: 100%; background-color: black;color: white;">LogIn</button>
+        
+        <p style="color: red; margin-top: 5px;" class="errorLogin"></p>
+       </form>
+       
+       
+      </div>
+      </div>
+      </div>
+      
+     
+    </div>
+  </section>
+
+
+  <div>
+    <h1>Registered People</h1>
+    <table style="margin-top: 20px;">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>PHONE</th>
+            
+        </tr>
+    </thead>
+
+    <tbody id="sheetBody">
+        
+
+        
+    </tbody>
+</table>
+  </div>
+  <footer style="width: 90%;">
+      <span>Britlex</span>
+      <ul style="display: flex;align-items: center;gap: 10px;">
+        <li>Terms and Conditions</li>
+        <li>Privacy Policy</li>
+        <li>Cookie Police</li>
+      </ul>
+    </footer>
+  <script src="script.js"></script>
+</body>
+</html>

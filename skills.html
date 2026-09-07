@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header style="width: 100%; padding: 20px">
+      <span class="logo">Brillex</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="registration.html">Account</a></li>
+        <li><a href="empty.html">Blank</a></li>
+      </ul>
+      <button class="button">Let's Talk</button>
+    </header>
+    <div class="container">
+      <div class="plan-content">
+        <h1>Course Plan</h1>
+        <span
+          >Three practical ways to study, from flexible solo lessons to personal
+          tutoring.</span
+        >
+        <div
+          class="course-plan"
+          style="display: flex; gap: 20px; align-items: center"
+        >
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 30px;
+              border: 1px solid black;
+              padding: 20px;
+            "
+          >
+            <h1>Self-study online</h1>
+            <p>
+              Short grammar lessons, vocabulary cards, and weekly exercises you
+              can complete at your own pace.
+            </p>
+            <span>
+              <span style="font-size: 30px; font-weight: bold">$5.99</span> per
+              month</span
+            >
+            <button><a href="registration.html">Register</a></button>
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 30px;
+              border: 1px solid black;
+              padding: 20px;
+            "
+          >
+            <h1>Live online classes</h1>
+            <p>
+              Small-group classes with a teacher, speaking practice, and shared
+              weekly goals.
+            </p>
+            <span>
+              <span style="font-size: 30px; font-weight: bold">$12.99</span> per
+              month</span
+            >
+            <button><a href="registration.html">Register</a></button>
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 30px;
+              border: 1px solid black;
+              padding: 20px;
+            "
+          >
+            <h1>Personal tuition</h1>
+            <p>
+              One-to-one tutoring, feedback, and a learning plan matched to your
+              goals.
+            </p>
+            <span>
+              <span style="font-size: 30px; font-weight: bold">$20.99</span> per
+              month</span
+            >
+            <button><a href="registration.html">Register</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="practice-content">
+      <h1>What You Practice</h1>
+      <span
+        >Each course is built from compact lessons that keep repetition
+        useful.</span
+      >
+      <div style="display: flex; gap: 20px; align-items: center">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            border: 1px solid black;
+            padding: 20px;
+          "
+        >
+          <div class="letter">A</div>
+          <h2>Grammar</h2>
+          <p>
+            Clear rules, examples, and short tasks that turn theory into habit.
+          </p>
+
+          <button class="more">Learn More</button>
+        </div>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            border: 1px solid black;
+            padding: 20px;
+          "
+        >
+          <div class="letter">B</div>
+          <h2>Vocabulary</h2>
+          <p>
+            Words grouped by useful themes: travel, study, work, family, and
+            daily life.
+          </p>
+
+          <button class="more">Learn More</button>
+        </div>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            border: 1px solid black;
+            padding: 20px;
+          "
+        >
+          <div class="letter">C</div>
+          <h2>Conversation</h2>
+          <p>Guided prompts for real answers, not only textbook sentences.</p>
+
+          <button class="more">Learn More</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <button class="close" id="closeModal">×</button>
+
+        <h2 id="modalTitle"></h2>
+
+        <p id="modalText"></p>
+
+        <ul id="modalList"></ul>
+      </div>
+    </div>
+
+    <script src="modal.js"></script>
+    <footer style="width: 90%">
+      <span>Britlex</span>
+      <ul style="display: flex; align-items: center; gap: 10px">
+        <li>Terms and Conditions</li>
+        <li>Privacy Policy</li>
+        <li>Cookie Police</li>
+      </ul>
+    </footer>
+  </body>
+</html>
