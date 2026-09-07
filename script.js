@@ -6,164 +6,128 @@ const registrationForm = document.getElementById("registrationForm");
 const loginForm = document.getElementById("loginForm");
 const usersTableBody = document.getElementById("usersTableBody");
 
-const openRegisterModal = document.getElementById("openRegisterModal");
-const openLoginModal = document.getElementById("openLoginModal");
 const closeRegisterModal = document.getElementById("closeRegisterModal");
 const closeLoginModal = document.getElementById("closeLoginModal");
 
+
 function getUsers() {
-    const savedUsers = localStorage.getItem(usersStorageKey);
-    const users = savedUsers ? JSON.parse(savedUsers) : [];
+    const users = JSON.parse(localStorage.getItem(usersStorageKey) || "[]");
 
     return Array.isArray(users) ? users : [];
 }
+
 
 function saveUsers(users) {
     localStorage.setItem(usersStorageKey, JSON.stringify(users));
 }
 
-function openRegisterForm() {
-    if (registerModal) {
-        registerModal.style.display = "flex";
-        registerModal.setAttribute("aria-hidden", "false");
-    }
+
+function setModal(modal, isOpen) {
+    if (!modal) return;
+
+    modal.style.display = isOpen ? "flex" : "none";
+    modal.setAttribute("aria-hidden", isOpen ? "false" : "true");
 }
 
-function closeRegisterForm() {
-    if (registerModal) {
-        registerModal.style.display = "none";
-        registerModal.setAttribute("aria-hidden", "true");
-    }
-}
-
-function openLoginForm() {
-    if (loginModal) {
-        loginModal.style.display = "flex";
-        loginModal.setAttribute("aria-hidden", "false");
-    }
-}
-
-function closeLoginForm() {
-    if (loginModal) {
-        loginModal.style.display = "none";
-        loginModal.setAttribute("aria-hidden", "true");
-    }
-}
 
 function showMessage(elementId, message, color) {
     const messageElement = document.getElementById(elementId);
 
-    if (messageElement) {
-        messageElement.textContent = message;
-        messageElement.style.color = color;
-    }
+    if (!messageElement) return;
+
+    messageElement.textContent = message;
+    messageElement.style.color = color;
 }
 
+
 function renderUsers() {
-    if (!usersTableBody) {
-        return;
-    }
+    if (!usersTableBody) return;
 
     const users = getUsers();
     usersTableBody.innerHTML = "";
 
     if (users.length === 0) {
-        const row = document.createElement("tr");
-        const cell = document.createElement("td");
-
-        cell.className = "u7";
-        cell.colSpan = 3;
-        cell.textContent = "No registered members yet";
-
-        row.appendChild(cell);
-        usersTableBody.appendChild(row);
+        usersTableBody.innerHTML = `
+            <tr>
+                <td class="u7" colspan="3">No registered members yet</td>
+            </tr>
+        `;
         return;
     }
 
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i];
+    users.forEach(function (user, index) {
         const row = document.createElement("tr");
-        const numberCell = document.createElement("td");
-        const nameCell = document.createElement("td");
-        const emailCell = document.createElement("td");
 
-        numberCell.className = "u7";
-        nameCell.className = "u7";
-        emailCell.className = "u7";
+        [index + 1, user.fullName, user.email].forEach(function (value) {
+            const cell = document.createElement("td");
 
-        numberCell.textContent = i + 1;
-        nameCell.textContent = user.fullName;
-        emailCell.textContent = user.email;
+            cell.className = "u7";
+            cell.textContent = value;
 
-        row.appendChild(numberCell);
-        row.appendChild(nameCell);
-        row.appendChild(emailCell);
+            row.appendChild(cell);
+        });
+
         usersTableBody.appendChild(row);
-    }
+    });
 }
 
-if (openRegisterModal) {
-    openRegisterModal.onclick = function () {
-        showMessage("registrationMessage", "", "");
-        openRegisterForm();
-    };
-}
 
-if (openLoginModal) {
-    openLoginModal.onclick = function () {
-        showMessage("loginMessage", "", "");
-        openLoginForm();
-    };
-}
+document
+    .querySelectorAll('#openRegisterModal, [data-modal-open="register"]')
+    .forEach(function (button) {
+        button.onclick = function () {
+            showMessage("registrationMessage", "", "");
+            setModal(registerModal, true);
+        };
+    });
 
-document.querySelectorAll('[data-modal-open="register"]').forEach(function (button) {
-    button.onclick = function () {
-        showMessage("registrationMessage", "", "");
-        openRegisterForm();
-    };
-});
 
-document.querySelectorAll('[data-modal-open="login"]').forEach(function (button) {
-    button.onclick = function () {
-        showMessage("loginMessage", "", "");
-        openLoginForm();
-    };
-});
+document
+    .querySelectorAll('#openLoginModal, [data-modal-open="login"]')
+    .forEach(function (button) {
+        button.onclick = function () {
+            showMessage("loginMessage", "", "");
+            setModal(loginModal, true);
+        };
+    });
+
 
 if (closeRegisterModal) {
     closeRegisterModal.onclick = function () {
-        closeRegisterForm();
+        setModal(registerModal, false);
     };
 }
+
 
 if (closeLoginModal) {
     closeLoginModal.onclick = function () {
-        closeLoginForm();
+        setModal(loginModal, false);
     };
 }
 
-if (registerModal) {
-    registerModal.onclick = function (event) {
-        if (event.target === registerModal) {
-            closeRegisterForm();
-        }
-    };
-}
 
-if (loginModal) {
-    loginModal.onclick = function (event) {
-        if (event.target === loginModal) {
-            closeLoginForm();
-        }
-    };
-}
+[registerModal, loginModal].forEach(function (modal) {
+    if (modal) {
+        modal.onclick = function (event) {
+            if (event.target === modal) {
+                setModal(modal, false);
+            }
+        };
+    }
+});
+
 
 if (registrationForm) {
     registrationForm.onsubmit = function (event) {
         event.preventDefault();
 
         const fullName = document.getElementById("fullName").value.trim();
-        const email = document.getElementById("registerEmail").value.trim().toLowerCase();
+        const email = document
+            .getElementById("registerEmail")
+            .value
+            .trim()
+            .toLowerCase();
+
         const password = document.getElementById("registerPassword").value;
         const confirmPassword = document.getElementById("confirmPassword").value;
 
@@ -174,57 +138,75 @@ if (registrationForm) {
 
         const users = getUsers();
 
-        for (let i = 0; i < users.length; i++) {
-            if (users[i].email === email) {
-                showMessage("registrationMessage", "An account with this email already exists.", "red");
-                return;
-            }
+        if (users.some(function (user) {
+            return user.email === email;
+        })) {
+            showMessage(
+                "registrationMessage",
+                "An account with this email already exists.",
+                "red"
+            );
+            return;
         }
 
-        const newUser = {
+        users.push({
             fullName: fullName,
             email: email,
             password: password
-        };
+        });
 
-        users.push(newUser);
         saveUsers(users);
         renderUsers();
         registrationForm.reset();
-        showMessage("registrationMessage", "Account created successfully.", "#54d66a");
+
+        showMessage(
+            "registrationMessage",
+            "Account created successfully.",
+            "#54d66a"
+        );
     };
 }
+
 
 if (loginForm) {
     loginForm.onsubmit = function (event) {
         event.preventDefault();
 
-        const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+        const email = document
+            .getElementById("loginEmail")
+            .value
+            .trim()
+            .toLowerCase();
+
         const password = document.getElementById("loginPassword").value;
         const users = getUsers();
-        let foundUser = null;
 
-        for (let i = 0; i < users.length; i++) {
-            if (users[i].email === email && users[i].password === password) {
-                foundUser = users[i];
-            }
-        }
+        const foundUser = users.find(function (user) {
+            return user.email === email && user.password === password;
+        });
 
-        if (foundUser === null) {
+        if (!foundUser) {
             showMessage("loginMessage", "Incorrect email or password.", "red");
             return;
         }
 
         loginForm.reset();
-        showMessage("loginMessage", "Welcome back, " + foundUser.fullName + ".", "#54d66a");
+
+        showMessage(
+            "loginMessage",
+            "Welcome back, " + foundUser.fullName + ".",
+            "#54d66a"
+        );
     };
 }
 
+
 document.onkeydown = function (event) {
     if (event.key === "Escape") {
-        closeRegisterForm();
-        closeLoginForm();
+        setModal(registerModal, false);
+        setModal(loginModal, false);
     }
 };
+
 
 renderUsers();
