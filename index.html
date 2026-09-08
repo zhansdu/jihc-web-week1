@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .rating {
+        background-color: white;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-200">
+    <section name="navbar" class="sticky top-0 z-4"></section>
+
+    <header class="bg-blue-900 py-40 text-center">
+      <div class="hero flex flex-col gap-5">
+        <h1 class="text-white text-6xl font-bold leading-18">
+          Discover Your Next <br />Favourite Book
+        </h1>
+        <p class="text-2xl text-slate-100">
+          Find and read more books you'll love, and keep track of <br />the
+          books you want to read.
+        </p>
+      </div>
+    </header>
+    <section class="library flex flex-col gap-10 py-10 px-30">
+      <h1 class="text-4xl font-semibold">Popular books</h1>
+
+      <div class="books flex gap-20">
+        <div class="book bg-white rounded-[15px] overflow-hidden">
+          <img
+            class="w-full h-100 object-cover"
+            src="assets/alchemist.jpg"
+            alt=""
+          />
+          <div class="p-5 text-md leading-9">
+            <h2 class="text-2xl font-bold">The Alchemist</h2>
+            <p><strong>Author: </strong>Paulo Coelho</p>
+            <p><strong>Genre: </strong>Philosophical</p>
+            <p>
+              <strong>Rating: </strong>A philosophical fable about following
+              your dreams and listening to your heart
+            </p>
+          </div>
+        </div>
+        <div class="book bg-white rounded-[15px] overflow-hidden">
+          <img
+            class="w-full h-100 object-cover"
+            src="assets/pride_prejudice.jpg"
+            alt=""
+          />
+          <div class="p-5 text-md leading-9">
+            <h2 class="text-2xl font-bold">Pride and Prejudice</h2>
+            <p><strong>Author: </strong>Jane Austen</p>
+            <p><strong>Genre: </strong>Romance</p>
+            <p>
+              <strong>Rating: </strong>A witty commentary on class and
+              relationships in 19th-century England
+            </p>
+          </div>
+        </div>
+        <div class="book bg-white rounded-[15px] overflow-hidden">
+          <img
+            class="w-full h-100 object-cover"
+            src="assets/bravenewworld.jpg"
+            alt=""
+          />
+          <div class="p-5 text-md leading-9">
+            <h2 class="text-2xl font-bold">Brave New world</h2>
+            <p><strong>Author: </strong>Aldous Huxley</p>
+            <p><strong>Genre: </strong>Philosophical</p>
+            <p>
+              <strong>Rating: </strong>A disturbing look into a genetically
+              engineered, pleasure-driven society
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="py-15 px-30">
+      <div class="mx-auto">
+        <div class="text-center mb-14">
+          <h2 class="text-5xl font-bold text-blue-900 mb-5">About Us</h2>
+        </div>
+
+        <div class="grid gap-12 items-center">
+          <div class="text-center">
+            <p class="text-gray-600 leading-7 mb-10">
+              Welcome to BookSpace, a place created for people who love getting
+              lost in great stories. From timeless classics to modern
+              bestsellers, we bring together books from different genres and
+              authors in one convenient place. Whether you are searching for
+              your next mystery, looking for inspiration, or simply want to
+              spend a quiet evening with a good book, we are here to help you
+              discover something you'll love.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-5">
+            <div class="rating shadow-sm hover:shadow-xl transition">
+              <h4 class="text-xl font-bold text-gray-900 mb-2">10,000+</h4>
+
+              <p class="text-gray-500">Books available</p>
+            </div>
+
+            <div class="rating shadow-sm hover:shadow-xl transition">
+              <h4 class="text-xl font-bold text-gray-900 mb-2">5,000+</h4>
+
+              <p class="text-gray-500">Happy readers</p>
+            </div>
+
+            <div class="rating shadow-sm hover:shadow-xl transition">
+              <h4 class="text-xl font-bold text-gray-900 mb-2">50+</h4>
+
+              <p class="text-gray-500">Genres to explore</p>
+            </div>
+
+            <div class="rating shadow-sm hover:shadow-xl transition">
+              <h4 class="text-xl font-bold text-gray-900 mb-2">4.9/5</h4>
+
+              <p class="text-gray-500">Reader rating</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="quote mt-16 bg-blue-900 text-white rounded-2xl p-8 md:p-10 text-center"
+        >
+          <p class="text-2xl md:text-3xl font-semibold italic mb-4">
+            "A room without books is like a body without a soul."
+          </p>
+
+          <p class="text-blue-100">— Marcus Tullius Cicero</p>
+        </div>
+      </div>
+    </section>
+
+    <section name="footer"></section>
+
+    <script src="navbar/navbar.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>

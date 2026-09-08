@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Users - BookNest</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      .a {
+        color: gray;
+        font-size: large;
+      }
+      .a:hover {
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body class="bg-blue-900 flex flex-col">
+    <section name="navbar" class="sticky top-0 z-4"></section>
+
+    <section class="flex">
+      <section class="mx-auto px-6 py-12">
+        <div class="text-center mb-10">
+          <h1 class="text-[43px] font-bold text-white mt-2">
+            Registered Users
+          </h1>
+
+          <p class="text-2xl text-slate-400 mt-3">
+            People who have joined our BookSpace community
+          </p>
+        </div>
+
+        <div class="mb-6">
+          <p class="text-white text-xl">
+            Total users:
+            <span id="userCount" class="font-bold text-yellow-400"> 0 </span>
+          </p>
+        </div>
+
+        <div id="usersContainer" class="grid grid-cols-3 gap-10"></div>
+      </section>
+    </section>
+    <section name="footer"></section>
+
+    <script src="/navbar/navbar.js"></script>
+    <script src="/users/index.js"></script>
+  </body>
+</html>

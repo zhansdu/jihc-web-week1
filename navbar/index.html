@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      .a {
+        color: gray;
+        font-size: large;
+      }
+      .a:hover {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="bg-white/95">
+      <div
+        class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-7"
+      >
+        <a href="/index.html" class="text-3xl font-extrabold"
+          >Book<span class="text-primary">Space</span></a
+        >
+        <div class="flex gap-10 text-sm font-bold">
+          <a class="a" href="/index.html">Home</a>
+          <a class="a" href="/register/index.html">Register</a>
+          <a class="a" href="/collection/index.html">Collection</a>
+          <a class="a" href="/users/users.html">Users</a>
+          <a class="a" id="modalLink">Login</a>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      id="loginModal"
+      class="fixed hidden inset-0 bg-black/70 items-center justify-center z-50"
+    >
+      <div class="bg-white w-[400px] p-8 rounded-2xl shadow-2xl relative">
+        <button
+          id="close"
+          type="button"
+          class="absolute top-2 right-4 text-5xl text-gray-500 hover:text-red-500 cursor-pointer"
+        >
+          &times;
+        </button>
+
+        <h2 class="text-3xl font-bold text-center mb-6">Login</h2>
+
+        <form id="loginForm" class="flex flex-col gap-4">
+          <div>
+            <label class="block mb-2 font-semibold"> Email </label>
+
+            <input
+              id="loginEmail"
+              type="email"
+              placeholder="Enter your email..."
+              class="w-full border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label class="mb-2 font-semibold"> Password </label>
+
+            <input
+              id="loginPassword"
+              type="password"
+              placeholder="Enter your password..."
+              class="w-full rounded-lg p-3 hover:border-blue-500"
+            />
+          </div>
+
+          <p id="loginError" class="hidden text-red-600 text-sm"></p>
+
+          <button
+            type="submit"
+            class="bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 cursor-pointer"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="/navbar/navbar.js"></script>
+  </body>
+</html>
