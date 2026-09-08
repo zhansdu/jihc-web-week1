@@ -1,212 +1,100 @@
 const usersStorageKey = "cinemaNexusUsers";
-
-const registerModal = document.getElementById("registerModal");
-const loginModal = document.getElementById("loginModal");
-const registrationForm = document.getElementById("registrationForm");
-const loginForm = document.getElementById("loginForm");
-const usersTableBody = document.getElementById("usersTableBody");
-
-const closeRegisterModal = document.getElementById("closeRegisterModal");
-const closeLoginModal = document.getElementById("closeLoginModal");
-
+const get = id => document.getElementById(id);
+const registerModal = get("registerModal"), loginModal = get("loginModal");
+const registrationForm = get("registrationForm"), loginForm = get("loginForm");
+const usersTableBody = get("usersTableBody");
+const closeRegisterModal = get("closeRegisterModal"), closeLoginModal = get("closeLoginModal");
 
 function getUsers() {
     const users = JSON.parse(localStorage.getItem(usersStorageKey) || "[]");
-
     return Array.isArray(users) ? users : [];
 }
-
 
 function saveUsers(users) {
     localStorage.setItem(usersStorageKey, JSON.stringify(users));
 }
 
-
-function setModal(modal, isOpen) {
+function setModal(modal, open) {
     if (!modal) return;
-
-    modal.style.display = isOpen ? "flex" : "none";
-    modal.setAttribute("aria-hidden", isOpen ? "false" : "true");
+    modal.style.display = open ? "flex" : "none";
+    document.body.style.overflow = open ? "hidden" : "";
 }
 
-
-function showMessage(elementId, message, color) {
-    const messageElement = document.getElementById(elementId);
-
-    if (!messageElement) return;
-
-    messageElement.textContent = message;
-    messageElement.style.color = color;
+function message(id, text) {
+    const element = get(id);
+    if (element) {
+        element.textContent = text;
+        element.style.color = "red";
+    }
 }
-
 
 function renderUsers() {
     if (!usersTableBody) return;
-
     const users = getUsers();
-    usersTableBody.innerHTML = "";
+    usersTableBody.innerHTML = users.length ? "" : '<tr><td class="u7" colspan="3">No registered members yet</td></tr>';
+    if (!users.length) return;
 
-    if (users.length === 0) {
-        usersTableBody.innerHTML = `
-            <tr>
-                <td class="u7" colspan="3">No registered members yet</td>
-            </tr>
-        `;
+    users.forEach((user, index) => {
+        const row = document.createElement("tr");
+        [index + 1, user.fullName, user.email].forEach(value => {
+            const cell = document.createElement("td");
+            cell.className = "u7";
+            cell.textContent = value;
+            row.append(cell);
+        });
+        usersTableBody.append(row);
+    });
+}
+
+document.querySelectorAll('[data-modal-open="register"]').forEach(button => {
+    button.onclick = () => {
+        get("registrationMessage").textContent = "";
+        setModal(registerModal, true);
+    };
+});
+
+document.querySelectorAll('[data-modal-open="login"]').forEach(button => {
+    button.onclick = () => {
+        get("loginMessage").textContent = "";
+        setModal(loginModal, true);
+    };
+});
+
+if (closeRegisterModal) closeRegisterModal.onclick = () => setModal(registerModal, false);
+if (closeLoginModal) closeLoginModal.onclick = () => setModal(loginModal, false);
+
+if (registrationForm) registrationForm.onsubmit = event => {
+    event.preventDefault();
+    const fullName = get("fullName").value.trim();
+    const email = get("registerEmail").value.trim().toLowerCase();
+    const password = get("registerPassword").value;
+    const confirmPassword = get("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+        message("registrationMessage", "Passwords do not match.");
         return;
     }
 
-    users.forEach(function (user, index) {
-        const row = document.createElement("tr");
-
-        [index + 1, user.fullName, user.email].forEach(function (value) {
-            const cell = document.createElement("td");
-
-            cell.className = "u7";
-            cell.textContent = value;
-
-            row.appendChild(cell);
-        });
-
-        usersTableBody.appendChild(row);
-    });
-}
-
-
-document
-    .querySelectorAll('#openRegisterModal, [data-modal-open="register"]')
-    .forEach(function (button) {
-        button.onclick = function () {
-            showMessage("registrationMessage", "", "");
-            setModal(registerModal, true);
-        };
-    });
-
-
-document
-    .querySelectorAll('#openLoginModal, [data-modal-open="login"]')
-    .forEach(function (button) {
-        button.onclick = function () {
-            showMessage("loginMessage", "", "");
-            setModal(loginModal, true);
-        };
-    });
-
-
-if (closeRegisterModal) {
-    closeRegisterModal.onclick = function () {
-        setModal(registerModal, false);
-    };
-}
-
-
-if (closeLoginModal) {
-    closeLoginModal.onclick = function () {
-        setModal(loginModal, false);
-    };
-}
-
-
-[registerModal, loginModal].forEach(function (modal) {
-    if (modal) {
-        modal.onclick = function (event) {
-            if (event.target === modal) {
-                setModal(modal, false);
-            }
-        };
-    }
-});
-
-
-if (registrationForm) {
-    registrationForm.onsubmit = function (event) {
-        event.preventDefault();
-
-        const fullName = document.getElementById("fullName").value.trim();
-        const email = document
-            .getElementById("registerEmail")
-            .value
-            .trim()
-            .toLowerCase();
-
-        const password = document.getElementById("registerPassword").value;
-        const confirmPassword = document.getElementById("confirmPassword").value;
-
-        if (password !== confirmPassword) {
-            showMessage("registrationMessage", "Passwords do not match.", "red");
-            return;
-        }
-
-        const users = getUsers();
-
-        if (users.some(function (user) {
-            return user.email === email;
-        })) {
-            showMessage(
-                "registrationMessage",
-                "An account with this email already exists.",
-                "red"
-            );
-            return;
-        }
-
-        users.push({
-            fullName: fullName,
-            email: email,
-            password: password
-        });
-
-        saveUsers(users);
-        renderUsers();
-        registrationForm.reset();
-
-        showMessage(
-            "registrationMessage",
-            "Account created successfully.",
-            "#54d66a"
-        );
-    };
-}
-
-
-if (loginForm) {
-    loginForm.onsubmit = function (event) {
-        event.preventDefault();
-
-        const email = document
-            .getElementById("loginEmail")
-            .value
-            .trim()
-            .toLowerCase();
-
-        const password = document.getElementById("loginPassword").value;
-        const users = getUsers();
-
-        const foundUser = users.find(function (user) {
-            return user.email === email && user.password === password;
-        });
-
-        if (!foundUser) {
-            showMessage("loginMessage", "Incorrect email or password.", "red");
-            return;
-        }
-
-        loginForm.reset();
-
-        showMessage(
-            "loginMessage",
-            "Welcome back, " + foundUser.fullName + ".",
-            "#54d66a"
-        );
-    };
-}
-
-
-document.onkeydown = function (event) {
-    if (event.key === "Escape") {
-        setModal(registerModal, false);
-        setModal(loginModal, false);
-    }
+    const users = getUsers();
+    users.push({ fullName, email, password });
+    saveUsers(users);
+    renderUsers();
+    registrationForm.reset();
+    setModal(registerModal, false);
 };
 
+if (loginForm) loginForm.onsubmit = event => {
+    event.preventDefault();
+    const email = get("loginEmail").value.trim().toLowerCase();
+    const password = get("loginPassword").value;
+    const user = getUsers().find(item => item.email === email && item.password === password);
+
+    if (!user) {
+        message("loginMessage", "Incorrect email or password.");
+        return;
+    }
+    loginForm.reset();
+    setModal(loginModal, false);
+};
 
 renderUsers();
