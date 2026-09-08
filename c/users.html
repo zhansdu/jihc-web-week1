@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudentHub - Users</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>StudentHub</h1>
+
+      <div id="navbar"></div>
+    </header>
+    <div class="logcontainer">
+      <div class="forms">
+        <div class="formBox">
+          <h2>Login</h2>
+
+          <form id="loginForm">
+            <input class="email" type="email" placeholder="Email" required />
+
+            <input
+              class="password"
+              type="password"
+              placeholder="Password"
+              required
+            />
+
+            <button type="submit">Login</button>
+            
+          </form>
+
+          <p class="loginMessage"></p>
+        </div>
+      </div>
+    </div>
+    <main class="container">
+      <h1>Registered People</h1>
+
+      <div class="tableBox">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+
+          <tbody class="usersTable"></tbody>
+        </table>
+      </div>
+
+      <p class="noUsers"></p>
+    </main>
+
+    <footer>
+      
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
