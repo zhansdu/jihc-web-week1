@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A-SPACE — Orbit the Earth</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="nav"></div>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>ORBIT THE EARTH</h1>
+          <p>
+            Reporting from the NASA page, a satellite is an object that orbits
+            or surrounds another object in space. There are two different types
+            of satellites; namely natural and artificial satellites.
+          </p>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+      </section>
+
+      <section class="stats-section">
+        <div class="stat-card">
+          <div class="card-icon">
+            <img
+              src="../images/remote-sensing-satellite.png"
+              alt="Orbit satellite"
+            />
+          </div>
+          <h3>LEO</h3>
+          <h2>300–1500 KM</h2>
+          <p>Low Earth Orbit</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="card-icon">
+            <img src="../images/orbit (2).png" alt="High speed satellite" />
+          </div>
+          <h3>HI - SPEED</h3>
+          <h2>22,236 MIL</h2>
+          <p>Orbit Geostationary</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="card-icon">
+            <img src="../images/satellite (2).png" alt="Earth from space" />
+          </div>
+          <h3>EARTH</h3>
+          <h2>365 DAY</h2>
+          <p>Orbit Periode</p>
+        </div>
+      </section>
+
+      <section class="feature-section">
+        <div class="feature-content">
+          <span class="sub-title">— OUR MISSION</span>
+          <h2>RAPIDSCAT</h2>
+          <p>
+            Improve weather forecasting on Earth, provide cross-calibration for
+            all international satellites that monitor ocean winds, and improve
+            estimates of how ocean winds change throughout the day, around the
+            globe.
+          </p>
+          <button class="btn btn-primary">View All</button>
+        </div>
+        <div class="feature-media">
+          <img
+            src="../images/rapidscat-removebg-preview.png"
+            alt="Rapidscat Space Station"
+          />
+        </div>
+      </section>
+
+      <section class="feature-section reverse">
+        <div class="feature-media">
+          <img
+            src="../images/satellite-removebg-preview.png"
+            alt="Satellite in Orbit"
+          />
+        </div>
+        <div class="feature-content">
+          <span class="sub-title">— FUNCTION</span>
+          <h2>SATELLITE</h2>
+          <p>
+            Gives light at night. Affects the balance of sea water. Transmit
+            television signals, cell phones, and the internet. Transmits and
+            receives communication signals.
+          </p>
+          <div class="btn-group">
+            <button class="btn btn-primary">View All</button>
+            <button class="btn btn-outline">Submit</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <!-- LOGIN MODAL -->
+
+    <div id="login" class="loginModal">
+      <div class="login-content">
+        <span onclick="closeLoginModal()">&times;</span>
+        <h2>LONG TIME NO SEE!</h2>
+
+        <form>
+          <input type="email" placeholder="Space-Mail" class="loginEmail" />
+          <textarea placeholder="Password..." class="loginPassword"></textarea>
+          <button type="submit" onclick="logInBas()">Send Signal</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+      <div class="modal-content">
+        <span onclick="closeModal()">&times;</span>
+        <h2>JOIN THE CABIN</h2>
+
+        <form>
+          <input type="text" placeholder="Pilot Name" class="usernameInput" />
+          <input type="email" placeholder="Space-Mail" class="email" />
+          <textarea placeholder="Password..." class="password"></textarea>
+          <button type="submit" class="register" onclick="submitForm()">
+            Send Signal
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

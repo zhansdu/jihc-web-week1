@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planets Archive</title>
+    <link rel="stylesheet" href="planets.css" />
+  </head>
+  <body>
+    <div id="nav"></div>
+
+    <main class="planets-container">
+      <section class="planet-card flex-right">
+        <div class="planet-image-box">
+          <img
+            src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=800&auto=format&fit=crop"
+            alt="Cetrion Planet"
+            class="planet-img"
+          />
+        </div>
+
+        <div class="planet-info">
+          <span class="action-tag">EXPLORE</span>
+          <h1 class="planet-title">CETRION</h1>
+          <p class="subtitle">MYSTERY OF MAGICAL CONNECTION</p>
+
+          <div class="stats-row">
+            <div>
+              <span class="label">COORDINATES</span>
+              <p class="val">2093°00' N, 1764° 300' E</p>
+            </div>
+            <div>
+              <span class="label">POPULATION</span>
+              <p class="val">6.7 B</p>
+            </div>
+          </div>
+
+          <p class="description">
+            Each planet embodies something fundamentally unique, allowing
+            everyone to find a world to their liking.
+          </p>
+
+          <div class="hud-elements">
+            <span class="planet-num">_01</span>
+            <div class="chem-tags">
+              <span>He</span><span>Li</span><span>Zn</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="planet-card flex-left">
+        <div class="planet-info">
+          <span class="action-tag">EXPLORE</span>
+          <h1 class="planet-title">DEVLAAR</h1>
+          <p class="subtitle">THERMAL SURFACE ENVIRONMENT</p>
+
+          <div class="stats-row">
+            <div>
+              <span class="label">COORDINATES</span>
+              <p class="val">4065°01' N, 3094° 127' E</p>
+            </div>
+            <div>
+              <span class="label">POPULATION</span>
+              <p class="val">5.8 B</p>
+            </div>
+          </div>
+
+          <p class="description">
+            Fiery surface with extremely high volcanic activity, perfectly
+            tailored for heavy energy harvesting.
+          </p>
+
+          <div class="hud-elements">
+            <span class="planet-num">_02</span>
+            <div class="chem-tags">
+              <span>He</span><span>Si</span><span>Fe</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="planet-image-box">
+          <img
+            src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?q=80&w=800&auto=format&fit=crop"
+            alt="Devlaar Planet"
+            class="planet-img"
+          />
+        </div>
+      </section>
+
+      <section class="planet-card flex-right">
+        <div class="planet-image-box">
+          <img
+            src="https://images.unsplash.com/photo-1614728423169-3f65fd722b7e?q=80&w=800&auto=format&fit=crop"
+            alt="Biturion Planet"
+            class="planet-img"
+          />
+        </div>
+
+        <div class="planet-info">
+          <span class="action-tag">EXPLORE</span>
+          <h1 class="planet-title">BITURION</h1>
+          <p class="subtitle">ANCIENT GLACIAL MONUMENTS</p>
+
+          <div class="stats-row">
+            <div>
+              <span class="label">COORDINATES</span>
+              <p class="val">3049°01' N, 4568° 364' E</p>
+            </div>
+            <div>
+              <span class="label">POPULATION</span>
+              <p class="val">5.4 B</p>
+            </div>
+          </div>
+
+          <p class="description">
+            An icy world containing massive ancient monolith structures and
+            extremely rare mineral deposits.
+          </p>
+
+          <div class="hud-elements">
+            <span class="planet-num">_03</span>
+            <div class="chem-tags">
+              <span>He</span><span>Si</span><span>Pb</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="footer"></div>
+    </main>
+
+        <!-- LOGIN MODAL -->
+
+    <div id="login" class="loginModal">
+      <div class="login-content">
+        <span onclick="closeLoginModal()">&times;</span>
+        <h2>LONG TIME NO SEE!</h2>
+
+        <form>
+          <input type="email" placeholder="Space-Mail" class="loginEmail" />
+          <textarea placeholder="Password..." class="loginPassword"></textarea>
+          <button type="submit" onclick="logInBas()">Send Signal</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+      <div class="modal-content">
+        <span onclick="closeModal()">&times;</span>
+        <h2>JOIN THE CABIN</h2>
+
+        <form>
+          <input type="text" placeholder="Pilot Name" class="usernameInput"/>
+          <input type="email" placeholder="Space-Mail"  class="email"/>
+          <textarea placeholder="Password..." class="password"></textarea>
+          <button type="submit" onclick="submitForm()">Send Signal</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../home_page/index.js"></script>
+  </body>
+</html>
