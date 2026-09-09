@@ -1,0 +1,30 @@
+<style>
+  .navbar{
+    box-shadow: 0 1px 4px 4px gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding:10px;
+    position: fixed;
+    width: 100vw;
+    background-color: white;
+
+  }
+
+  .navbar a{
+    margin-right: 5px;
+  }
+</style>
+<div class="navbar">
+  <div>
+    <a href="/DRYversion/home/index.html">Home</a>
+    <a href="/DRYversion/about/index.html">About page</a>
+    <a href="/DRYversion/users/index.html">Users page</a>
+  </div>
+
+  <div>
+    <a onclick="toggleModal('/DRYversion/__main__/navbar/login/index.html')">Login</a>
+    <a onclick="toggleModal('/DRYversion/__main__/navbar/register/index.html')">Register</a>
+  </div>
+</div>

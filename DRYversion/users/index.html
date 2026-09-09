@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/DRYversion/__main__/main.css">
+    <script src="/DRYversion/__main__/main.js"></script>
+    <script src="/DRYversion/__main__/navbar/register/index.js"></script>
+    <link rel="stylesheet" href="/DRYversion/common/modal/index.css">
+    <script src="/DRYversion/__main__/navbar/login/index.js"></script>
+
+  </head>
+  <body>
+    <div class="modal" id="modal">
+      <section name = 'modalContent'></section>
+    </div>
+    <section name="navbar"></section>
+
+    <main>
+      <div id="usersList">
+      </div>
+    </main>
+    
+    <section name="footer" style="margin-top: auto;"></section>
+
+    <script>
+      loadDocument('/DRYversion/__main__/navbar/index.html','section[name="navbar"]')
+      loadDocument('/DRYversion/__main__/footer/index.html','section[name="footer"]')
+    </script>
+    <script src="/DRYversion/users/index.js"></script>
+  </body>
+</html>

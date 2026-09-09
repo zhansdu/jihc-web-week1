@@ -1,0 +1,71 @@
+html,body{
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*{
+  box-sizing: inherit;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+}
+
+main{
+  margin-top: 40px;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+.modal{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: darkgray;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  visibility: hidden;
+  transition: .3s;
+  opacity: 0;
+}
+
+.openModal{
+  visibility: visible;
+  opacity: 1;
+}
+
+.navbar{
+  box-shadow: 0 1px 4px 4px gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px;
+  position: fixed;
+  width: 100vw;
+  background-color: white;
+}
+
+.navbar a{
+  margin-right: 5px;
+}
+
+.footer{
+  background-color: darkgray;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

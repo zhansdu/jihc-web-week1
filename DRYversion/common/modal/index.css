@@ -1,0 +1,19 @@
+.modal{
+  width: 100vw;
+  height:100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: darkgray;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  visibility: hidden;
+  transition: .3s;
+  opacity: 0;
+}
+
+.openModal{
+  visibility: visible;
+  opacity: 1;
+}

@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="modal" id="modal">
+      <section name="modalContent">
+        <form class="form" id="loginForm" onsubmit="login(event)">
+          <input type="text" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+
+          <button type="submit"> Sign in </button>
+          <button type="button" onclick="closeModal()"> Close </button>
+        </form>
+
+        <form class="form" id="registerForm" onsubmit="register(event)">
+          <input type="text" name="username" placeholder="username">
+          <input type="password" name="password" placeholder="password">
+          <input type="number" name="age" placeholder="age">
+          <select name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+
+          <button type="submit">Register</button>
+          <button type="button" onclick="closeModal()"> Close </button>
+        </form>
+      </section>
+    </div>
+
+    <div class="navbar">
+      <div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About page</a>
+        <a href="users.html">Users page</a>
+      </div>
+
+      <div>
+        <a onclick="openLogin()">Login</a>
+        <a onclick="openRegister()">Register</a>
+      </div>
+    </div>
+
+    <main>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+      <p>A lot of content</p>
+    </main>
+
+    <div class="footer" style="margin-top: auto;">
+      footer
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

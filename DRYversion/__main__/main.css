@@ -1,0 +1,28 @@
+html,body{
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*{
+  box-sizing: inherit;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+
+main{
+  margin-top: 40px;
+}
