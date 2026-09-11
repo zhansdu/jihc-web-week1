@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudentHub - Home</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>StudentHub</h1>
+
+      <div id="navbar"></div>
+    </header>
+    <div class="logcontainer">
+      <div class="forms">
+        <div class="formBox">
+          <h2>Login</h2>
+
+          <form id="loginForm">
+            <input class="email" type="email" placeholder="Email" required />
+
+            <input
+              class="password"
+              type="password"
+              placeholder="Password"
+              required
+            />
+
+            <button type="submit">Login</button>
+          </form>
+
+          <p class="loginMessage"></p>
+        </div>
+      </div>
+    </div>
+
+    <main class="container">
+      <section class="hero">
+        <div class="text">
+          <h1>Welcome to StudentHub</h1>
+
+          <p>
+            Create an account, log in and see all registered students in one
+            place.
+          </p>
+
+          <button><a href="empty.html">About website</a></button>
+        </div>
+      </section>
+
+      <section class="cards">
+        <div class="box">
+          <img
+            class="boxImage"
+            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=700&q=80"
+            alt="Students working together"
+          />
+          <h2>Student Community</h2>
+          <p>A place for students to learn, create, and grow together.</p>
+          <a href="#">About Hub</a>
+        </div>
+
+        <div class="box">
+          <img
+            class="boxImage"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80"
+            alt="Students studying together"
+          />
+          <h2>Community</h2>
+          <p>Meet motivated students and make useful connections.</p>
+          <a href="#">Meet People</a>
+        </div>
+
+        <div class="box">
+          <img
+            class="boxImage"
+            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=700&q=80"
+            alt="Students at a workshop"
+          />
+          <h2>Workshops</h2>
+          <p>Build new skills through practical workshops and sessions.</p>
+          <a href="#">Explore Workshops</a>
+        </div>
+
+        <div class="box">
+          <img
+            class="boxImage"
+            src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=700&q=80"
+            alt="Students at an event"
+          />
+          <h2>Events</h2>
+          <p>Join meetups, talks, and events happening in the community.</p>
+          <a href="#">See Events</a>
+        </div>
+
+        <div class="box">
+          <img
+            class="boxImage"
+            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80"
+            alt="Students collaborating on a project"
+          />
+          <h2>Projects</h2>
+          <p>Turn your ideas into real projects with a supportive team.</p>
+          <a href="#">View Projects</a>
+        </div>
+
+        <div class="box">
+          <img
+            class="boxImage"
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80"
+            alt="Student using a laptop"
+          />
+          <h2>Support</h2>
+          <p>Get help and connect with other members of StudentHub.</p>
+          <a href="#">Get Support</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal">
+      <div class="modalContent">
+        <button class="closeModal">X</button>
+
+        <h2>About StudentHub</h2>
+
+        <p>
+          This website allows users to register and log in. Registered users are
+          saved in localStorage and displayed on the Users page.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 StudentHub</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
