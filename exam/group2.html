@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>FAQ accordion</title>
+    <style>
+      .questionWrapper{
+        width:100%;
+        display: flex;
+        gap:3px;
+        align-items: baseline;
+      }
+      .question{
+        background-color: white;
+        flex:1;
+        border: 1px solid orange;
+        border-radius: 4px;
+        padding:3px 10px;
+        cursor: pointer;
+      }
+      .hidden{
+        height:0.9lh;
+        overflow: hidden;
+      }
+      .questionButton, .questionInput{
+        margin-top: 10px;
+        border:1px solid orange;
+        background-color: transparent;
+        border-radius: 4px;
+        padding:5px 10px;
+      }
+      .questionButton:hover{
+        background-color: orange;
+        color:white;
+      }
+
+      #changeAnswer{
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="questionWrapper">
+      <div class="question hidden">
+        Question 1
+        <div class="answer">
+          answer
+        </div>
+      </div>
+      
+      <div class="question hidden">
+        Question 2
+        <div class="answer">
+          answer
+        </div>
+      </div>
+      <div class="question hidden">
+        Question 3
+        <div class="answer">
+          answer
+        </div>
+      </div>
+    </div>
+    <form id="changeAnswer">
+      <input type="text" placeholder="Change answer" id="answer">
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document.querySelectorAll('.question').forEach(q=>{
+        q.addEventListener('click',()=>{
+          q.classList.toggle('hidden')
+        })
+      })
+      document.getElementById('changeAnswer').addEventListener('submit',(e)=>{
+        e.preventDefault()
+        const answer = document.getElementById('answer').value
+
+        document.querySelectorAll('.answer').forEach((d)=>{
+          d.innerHTML = answer
+        })
+      })
+    </script>
+  </body>
+</html>

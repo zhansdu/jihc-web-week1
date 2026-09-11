@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <title>Hello kitty</title>
+    <style>
+      .tabsWrapper{
+        display: flex;
+        gap:5px;
+        justify-content: center;
+        width: fit-content;
+      }
+      .active{
+        color:orange;
+        border-color: orange;
+        text-decoration: underline;
+      }
+
+      .tab{
+        cursor: pointer;
+        border:1px solid;
+        padding:5px 30px;
+      }
+
+      .content{
+        margin-top: 20px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tabsWrapper">
+      <div class="tab" id="tab1" >Tab1</div>
+      <div class="tab" id="tab2" >Tab2</div>
+    </div>
+    <form class="content" id="tab1Form">
+      <input type="text" placeholder="Leave a comment" id="tab1forminput">
+      <button>Submit</button>
+    </form>
+    <form class="content" id="tab2Form">
+      <input type="text" placeholder="What's your name" id="tab2forminput">
+      <button>Submit</button>
+    </form>
+    <div>
+      Comment:
+      <div id="comment"></div>
+    </div>
+    <div>
+      Name:
+      <div id="name"></div>
+    </div>
+    <script>
+      const tab1 = document.getElementById('tab1');
+      const tab2 = document.getElementById('tab2');
+      const tab1form = document.getElementById('tab1Form');
+      const tab2form = document.getElementById('tab2Form');
+      const tab1forminput = document.getElementById('tab1forminput')
+      const tab2forminput = document.getElementById('tab2forminput')
+      const commentI = document.getElementById('comment')
+      const nameI = document.getElementById('name')
+
+      function activateTab1(){
+        tab1form.style.display='block'
+        tab2form.style.display='none'
+        tab2.classList.remove('active')
+        tab1.classList.add('active')
+      }
+      function activateTab2(){
+        tab2form.style.display='block'
+        tab1form.style.display='none'
+        tab1.classList.remove('active')
+        tab2.classList.add('active')
+      }
+      tab1.addEventListener('click',()=>{
+        activateTab1()
+      })
+      tab2.addEventListener('click',()=>{
+        activateTab2()
+      })
+
+      tab1form.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        commentI.innerHTML = tab1forminput.value
+      })
+      tab2form.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        nameI.innerHTML = tab2forminput.value
+      })
+
+      activateTab1()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Skill list</title>
+    <style>
+      .formWrapper{
+        display: flex;
+        gap: 4px;
+      }
+      .submit{
+        border-radius: 4px;
+        border: 0;
+        background-color: orange;
+        padding:0 20px;
+      }
+
+      #skillText{
+        border:1px solid orange;
+        border-radius: 4px;
+        width:200px;
+        padding:5px
+      }
+
+      #skill{
+        display: flex;
+        gap: 3px;
+        flex-wrap: wrap;
+      }
+
+      #skill > div{
+        border-radius: 15px;
+        border: 2px solid black;
+        width:fit-content;
+        padding: 5px 10px;
+      }
+      #skill > div:hover{
+        background-color: orange;
+        border-color: transparent;
+        color:white;
+      }
+
+      .active{
+        background-color: orange;
+        border-color: transparent;
+        color:white;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="formWrapper" class="formWrapper">
+      <input type="text" id="skillText">
+      <button class="submit">
+        +
+      </button>
+    </form>
+    <div id="skill">
+      zdes' skill
+    </div>
+    <script>
+      const formWrapper = document.getElementById('formWrapper')
+      const text = document.getElementById('skillText')
+      const skill = document.getElementById('skill')
+
+
+      formWrapper.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        skill.innerHTML+=
+        `
+          <div class="skill">
+            ${text.value}
+          </div
+        ` 
+        document.querySelectorAll('.skill').forEach(s=>{
+          s.addEventListener('click',()=>{
+            s.classList.add('active')
+          })
+        })
+      })
+
+      
+      
+    </script>
+  </body>
+</html>
