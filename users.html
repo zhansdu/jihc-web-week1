@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a class="nav-box" href="home.html">Go Homepage</a>
+            <div class="nav-links">
+                <a href="home.html" class="btn">Home</a>
+                <a href="register.html" class="btn">Registration</a>
+                <a href="users.html" class="btn">Users</a>
+                <a href="empty.html" class="btn">Empty</a>
+                <button id="modalBtn" class="btn login-button" >Login</button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <h2>Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>User name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="table"></tbody>
+        </table>
+    </main>
+    <footer>
+        <p>JIHC © 2026</p>
+    </footer>
+    <div id="loginModal" class="popup" >
+        <div class="modal">
+            <h2 id="loginTitle">Login</h2>
+            <form id="loginForm">
+                <label for="loginEmail">Email</label>
+                <input id="loginEmail" name="email" type="email" placeholder="Email" autocomplete="username" required>
+                <label for="loginPassword">Password</label>
+                <input id="loginPassword" name="password" type="password" placeholder="Password" required>
+                <button class="btn white" type="submit">Submit</button>
+                <button id="loginCloseBtn" class="btn white" >Close</button>
+            </form>
+        </div>
+    </div>
+    <div id="Modal" class="popup" >
+        <div class="modal">
+            <p id="ModalText"></p>
+            <button id="ModalCloseBtn" class="btn white">Close</button>
+        </div>
+    </div>
+    <script src="login.js"></script>
+    <script src="users.js"></script>
+</body>
+
+</html>
