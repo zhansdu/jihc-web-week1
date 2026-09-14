@@ -1,0 +1,221 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background-color: #030303;
+  color: #ffffff;
+  padding: 20px 8%;
+  overflow-x: hidden;
+}
+#nav,
+.footer {
+  width: 90%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+#nav {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid rgba(139, 211, 255, 0.25);
+  position: fixed; 
+  background: rgba(3, 7, 18, 0.85);  
+  left: 0;
+  right: 0;
+}
+
+#nav img {
+  display: none;
+}
+
+#nav::before {
+  content: "A-SPACE";
+  margin-right: auto;
+  color: #f4f7fb;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+#nav .links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+#nav a {
+  color: #f4f7fb;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+#nav a:hover {
+  color: #8bd3ff;
+}
+
+.planet-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80vh;
+  padding: 40px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.flex-right {
+  flex-direction: row;
+}
+
+.flex-left {
+  flex-direction: row-reverse;
+}
+
+.planet-image-box {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+}
+
+.planet-img {
+  width: 380px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.12));
+}
+
+.planet-info {
+  width: 45%;
+}
+
+.action-tag {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #888;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.planet-title {
+  font-size: 42px;
+  letter-spacing: 3px;
+  font-weight: 900;
+}
+
+.subtitle {
+  font-size: 10px;
+  color: #666;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+/* HUD Data Grid */
+.stats-row {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-left: 2px solid #fff;
+}
+
+.label {
+  font-size: 9px;
+  color: #777;
+  display: block;
+}
+
+.val {
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 3px;
+}
+
+.description {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #aaa;
+  max-width: 380px;
+  margin-bottom: 30px;
+}
+
+.hud-elements {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.planet-num {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: -2px;
+}
+
+.chem-tags {
+  display: flex;
+  gap: 8px;
+}
+
+.chem-tags span {
+  border: 1px solid #444;
+  padding: 4px 8px;
+  font-size: 11px;
+  color: #888;
+}
+
+.modal, #login {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content, .login-content {
+  position: relative;
+  width: min(90%, 420px);
+  padding: 32px;
+  background: #101010;
+  border: 1px solid #8bd3ff;
+}
+
+.modal-content span, .login-content span {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.modal-content h2 {
+  margin-bottom: 24px;
+}
+
+.modal-content form, .login-content form {
+  display: grid;
+  gap: 12px;
+}
+
+input,
+textarea,
+button {
+  padding: 10px;
+  font: inherit;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
