@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookNest</title>
+  </head>
+
+  <body
+    style="
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    "
+  >
+    <div
+      class="Nav"
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(77, 15, 158, 0.89);
+        padding: 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-sizing: border-box;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          gap: 30px;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <img
+          width="60px"
+          height="40px"
+          src="ChatGPT Image 4 сент. 2026 г., 12_19_49.png"
+        />
+
+        <a style="color: white" href="index.html">Home</a>
+        <a style="color: white" href="users.html">Users</a>
+        <a style="color: white" href="empty.html">Empty</a>
+      </div>
+
+      <div>
+        <a style="color: white" href="register.html">Register</a>
+      </div>
+    </div>
+
+    <div
+      class="containetr"
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 17px;
+        background-color: rgba(77, 15, 158, 0.89);
+        width: 350px;
+        min-height: 500px;
+        border-radius: 15px;
+        margin-top: 100px;
+      "
+    >
+      <h2 style="color: white">Log in</h2>
+
+      <div
+        style="display: flex; flex-direction: column; gap: 10px; width: 306px"
+      >
+        <form id="registerForm">
+          <input
+            id="name"
+            type="text"
+            placeholder="Name"
+            required
+            style="
+              width: 100%;
+              height: 35px;
+              margin-bottom: 10px;
+              box-sizing: border-box;
+            "
+          />
+
+          <input
+            id="email"
+            type="email"
+            placeholder="Email"
+            required
+            style="
+              width: 100%;
+              height: 35px;
+              margin-bottom: 10px;
+              box-sizing: border-box;
+            "
+          />
+
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            required
+            style="
+              width: 100%;
+              height: 35px;
+              margin-bottom: 10px;
+              box-sizing: border-box;
+            "
+          />
+
+          <button
+            type="submit"
+            style="
+              width: 100%;
+              height: 35px;
+              background-color: white;
+              color: black;
+              border: none;
+              cursor: pointer;
+            "
+          >
+            Register
+          </button>
+        </form>
+
+        <p
+          id="registerMessage"
+          style="color: white; text-align: center; margin: 5px 0"
+        ></p>
+      </div>
+
+      <div
+        style="
+          width: 306px;
+          border-top: 1px solid rgba(255, 255, 255, 0.4);
+          margin: 20px 0;
+        "
+      ></div>
+
+      <h2 style="color: white">Sign in</h2>
+
+      <form
+        id="loginForm"
+        style="display: flex; flex-direction: column; width: 306px"
+      >
+        <input
+          id="loginEmail"
+          type="email"
+          placeholder="Email"
+          required
+          style="
+            width: 100%;
+            height: 35px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+          "
+        />
+
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="Password"
+          required
+          style="
+            width: 100%;
+            height: 35px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+          "
+        />
+
+        <button
+          type="submit"
+          style="
+            background-color: rgb(1, 1, 1);
+            color: white;
+            width: 100%;
+            height: 35px;
+            border: none;
+            cursor: pointer;
+          "
+        >
+          Sign in
+        </button>
+      </form>
+
+      <p
+        id="loginMessage"
+        style="color: white; text-align: center; margin: 8px 0"
+      ></p>
+
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: white;
+          width: 300px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <input
+            type="checkbox"
+            id="rememberMe"
+            style="width: 17px; height: 17px"
+          />
+
+          <p>remember me</p>
+        </div>
+
+        <p>Need help?</p>
+      </div>
+
+      <div
+        class="end"
+        style="
+          color: white;
+          width: 300px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div style="display: flex; gap: 3px; margin-right: 110px">
+          <p style="color: rgba(255, 255, 255, 0.628)">New to BookNest?</p>
+
+          <p>Create account</p>
+        </div>
+
+        <p style="color: rgba(255, 255, 255, 0.557)">
+          This page is protected by Google reCAPTCHA to ensure you are not a
+          bot. Learn more
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

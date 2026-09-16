@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .empty-page {
+        min-height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f7f3ee;
+      }
+
+      .empty-content {
+        text-align: center;
+      }
+
+      .book-icon {
+        font-size: 50px;
+        margin-bottom: 15px;
+      }
+
+      .empty-content h1 {
+        font-family: Georgia, serif;
+        font-size: 38px;
+        color: #241b2f;
+        margin: 0 0 10px;
+      }
+
+      .empty-content p {
+        color: #777;
+        font-size: 15px;
+        margin-bottom: 25px;
+      }
+
+      .empty-content a {
+        display: inline-block;
+        padding: 10px 22px;
+        background-color: #4d0f9e;
+        color: white;
+        text-decoration: none;
+        border-radius: 7px;
+      }
+
+      .footer {
+        background-color: #241b2f;
+        color: #f5f1e8;
+        padding: 30px 50px 15px;
+        text-align: center;
+      }
+
+      .footer-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-family: Georgia, serif;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .footer-logo img {
+        width: 45px;
+        height: 35px;
+        object-fit: contain;
+      }
+
+      .footer p {
+        margin: 12px 0 20px;
+        color: #cfc6d8;
+        font-size: 14px;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-bottom: 20px;
+      }
+
+      .footer-links a {
+        color: #f5f1e8;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .footer-links a:hover {
+        color: #c8a8e9;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 15px;
+        color: #aaa1b2;
+        font-size: 12px;
+      }
+      .featured {
+        padding: 80px 50px;
+        text-align: center;
+        background-color: rgba(0, 0, 255, 0.103);
+        margin-top: 2px;
+      }
+
+      .small-title {
+        color: #8b6b9e;
+        font-size: 13px;
+        letter-spacing: 3px;
+        font-weight: bold;
+      }
+
+      .featured h2 {
+        font-family: Georgia, serif;
+        font-size: 42px;
+        color: #241b2f;
+        margin: 10px 0;
+      }
+
+      .featured-text {
+        color: #777;
+        max-width: 550px;
+        margin: 0 auto 40px;
+      }
+
+      .books {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+      }
+
+      .book-card {
+        width: 200px;
+        background-color: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .book-card img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+
+      .book-card h3 {
+        font-family: Georgia, serif;
+        margin: 12px 0 5px;
+        color: #241b2f;
+      }
+
+      .book-card p {
+        color: #888;
+        margin: 0;
+      }
+
+      .view-books {
+        margin-top: 40px;
+        background-color: #4d0f9e;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="Nav"
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(77, 15, 158, 0.89);
+        padding: 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-sizing: border-box;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          gap: 30px;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <img
+          width="60px"
+          height="40px"
+          src="ChatGPT Image 4 сент. 2026 г., 12_19_49.png"
+        />
+        <a style="color: white" href="index.html">Home</a>
+        <a style="color: white" href="users.html">Users</a>
+        <a style="color: white" href="empty.html">Empty</a>
+      </div>
+      <div>
+        <a style="color: white" href="register.html">Register</a>
+      </div>
+    </div>
+
+    <footer class="footer" style="margin-top: 660px">
+      <div class="footer-logo">
+        <img
+          src="ChatGPT Image 4 сент. 2026 г., 12_19_49.png"
+          alt="BookNest Logo"
+        />
+        <span>BookNest</span>
+      </div>
+
+      <p>Discover stories. Explore worlds. Find your next favorite book.</p>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="users.html">Users</a>
+        <a href="empty.html">About</a>
+        <a href="register.html">Register</a>
+      </div>
+
+      <div class="footer-bottom">© 2026 BookNest. All rights reserved.</div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
