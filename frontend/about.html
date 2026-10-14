@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Cinema Nexus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="h1"><p class="p1" style="padding-right: 10px;">CINEMA</p><p class="p1" style="color: red;">NEXUS</p></div>
+        <div class="h2">
+            <a class="a1" href="index.html">Home</a><a class="a1" href="movies.html">Movies</a><a class="a1" href="users.html">Members</a><a class="a1 active" href="about.html">About</a>
+            <button class="a3" type="button" data-modal-open="register">Join Club</button><button class="a4" type="button" data-modal-open="login">Login</button>
+        </div>
+    </div>
+
+    <div class="empty"></div>
+
+    <div class="footer">
+        <div class="f1">
+            <div class="f2">
+                <div class="f3"><p class="f4">CINEMA <span class="f5">NEXUS</span></p><p class="f6">Discover new movies, upcoming premieres and unforgettable cinema events.</p></div>
+                <div class="f7"><p class="f8">QUICK LINKS</p><a class="f9" href="index.html">Home</a><a class="f9" href="index.html#now">Now Showing</a><a class="f9" href="index.html#coming">Coming Soon</a><a class="f9" href="movies.html">Movies</a></div>
+                <div class="f10"><p class="f11">ACCOUNT</p><button class="f12" type="button" data-modal-open="register">Join Our Club</button><button class="f12" type="button" data-modal-open="login">Login</button><a class="f12" href="users.html">Registered Users</a></div>
+                <div class="f13"><p class="f14">CONTACT US</p><p class="f15">Cinema Nexus Auditorium</p><p class="f15">Taraz, Kazakhstan</p><p class="f15">cinemanexus@gmail.com</p><p class="f15">+7 700 000 00 00</p></div>
+            </div>
+            <div class="f16"><p class="f17">© 2026 Cinema Nexus. All rights reserved.</p><div class="f18"><a class="f19" href="#">Privacy Policy</a><a class="f19" href="#">Terms of Use</a></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="q1" id="registerModal"><div class="q2"><button class="q3" id="closeRegisterModal" type="button">&times;</button><h2 class="q4">JOIN OUR CLUB</h2><p class="q5">Create your Cinema Nexus account.</p><form class="q6" id="registrationForm"><label class="q7" for="fullName">Full Name</label><input class="q8" type="text" id="fullName" placeholder="Enter your full name" required><label class="q7" for="registerEmail">Email</label><input class="q8" type="email" id="registerEmail" placeholder="Enter your email" required><label class="q7" for="registerPassword">Password</label><input class="q8" type="password" id="registerPassword" placeholder="Enter your password" required><label class="q7" for="confirmPassword">Confirm Password</label><input class="q8" type="password" id="confirmPassword" placeholder="Repeat your password" required><button class="q9" type="submit">Create Account</button><p class="q10" id="registrationMessage"></p></form></div></div>
+<div class="q1" id="loginModal"><div class="q2"><button class="q3" id="closeLoginModal" type="button">&times;</button><h2 class="q4">LOGIN</h2><p class="q5">Sign in to your Cinema Nexus account.</p><form class="q6" id="loginForm"><label class="q7" for="loginEmail">Email</label><input class="q8" type="email" id="loginEmail" placeholder="Enter your email" required><label class="q7" for="loginPassword">Password</label><input class="q8" type="password" id="loginPassword" placeholder="Enter your password" required><button class="q9" type="submit">Login</button><p class="q10" id="loginMessage"></p></form></div></div>
+<script src="script.js"></script>
+</body>
+</html>
