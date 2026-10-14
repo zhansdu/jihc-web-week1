@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(17, 21, 123);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            background-color: rgb(18, 8, 68);
+            border-bottom: 2px solid rgb(152, 169, 220);
+        }
+        .logo {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            flex: 1;
+            padding: 60px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        button {
+            padding: 12px 24px;
+            color: white;
+            background-color: rgb(69, 79, 173);
+            border: 2px solid rgb(174, 183, 207);
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        footer {
+            position: sticky;
+            bottom: 0;
+            background-color: rgb(18, 8, 68);
+            padding: 30px 50px;
+            font-size: 24px;
+            border-top: 2px solid rgb(129, 154, 225);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: rgb(18, 8, 68);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid rgb(129, 154, 225);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+        }
+        input {
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 8px;
+            border: 2px solid rgb(129, 154, 225);
+        }
+        .register-link-btn {
+            background-color: transparent;
+            border: 1px dashed rgb(152, 169, 220);
+            color: #d1d5db;
+            font-size: 14px;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">JAKE</div>
+        <nav>
+            <a href="main.html">Home</a>
+            <a href="register.html">Register</a>
+            <a href="users.html">Users</a>
+            <a href="empty.html">Empty</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Home Page</h1>
+        <button onclick="openmodal()">Login (Modal)</button>
+        <div id="loginmodal" class="modal">
+            <div class="modal-content">
+                <h2>Login</h2>
+                <input type="text" id="loginemail" placeholder="Registered Email">
+                <input type="password" id="loginpass" placeholder="Password">
+                <button onclick="login()">Enter</button>
+                <button onclick="gotoregister()" class="register-link-btn">Register Now</button>
+                <button onclick="closemodal()" style="background-color: transparent; border: none;">Close</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>Mynda footer</div>
+    </footer>
+
+    <script>
+        function openmodal() {
+            document.getElementById('loginmodal').style.display = 'flex';
+        }
+        function closemodal() {
+            document.getElementById('loginmodal').style.display = 'none';
+        }
+        function gotoregister() {
+            window.location.href = 'register.html';
+        }
+        function login() {
+            let email = document.getElementById('loginemail').value;
+            let pass = document.getElementById('loginpass').value;
+            let savedemail = localStorage.getItem('email');
+            let savedpass = localStorage.getItem('password');
+            if (email == savedemail && pass == savedpass && email != "") {
+                window.location.href = 'users.html';
+            } else {
+                alert("User not registered or wrong data!");
+            }
+        }
+    </script>
+</body>
+</html>

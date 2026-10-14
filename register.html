@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(17, 21, 123);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            background-color: rgb(18, 8, 68);
+            border-bottom: 2px solid rgb(152, 169, 220);
+        }
+        .logo {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            justify-content: center;
+        }
+        .orta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 31px;
+        }
+        input {
+            padding: 13px;
+            font-size: 15px;
+            border-radius: 10px;
+            width: 300px;
+            border: 2px solid rgb(129, 154, 225);
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 15px 40px;
+            color: white;
+            background-color: rgb(69, 79, 173);
+            border: 2px solid rgb(174, 183, 207);
+            border-radius: 40px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+        footer {
+            position: sticky;
+            bottom: 0;
+            background-color: rgb(18, 8, 68);
+            padding: 30px 50px;
+            font-size: 24px;
+            border-top: 2px solid rgb(129, 154, 225);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">JAKE</div>
+        <nav>
+            <a href="main.html">Home</a>
+            <a href="register.html">Register</a>
+            <a href="users.html">Users</a>
+            <a href="empty.html">Empty</a>
+        </nav>
+    </header>
+    <main>
+        <div class="orta">
+            <p>Register now</p>
+            <input id="fname" type="text" placeholder="First Name">
+            <input id="lname" type="text" placeholder="Last Name">
+            <input id="email" type="text" placeholder="Email">
+            <input id="password" type="password" placeholder="Password">
+            <input id="number" type="text" placeholder="Phone Number">
+            <button onclick="register()">Register</button>
+        </div>
+    </main>
+    <footer>
+        <div>Mynda footer</div>
+    </footer>
+    <script>
+        function register() {
+            localStorage.setItem('fname', document.getElementById('fname').value);
+            localStorage.setItem('lname', document.getElementById('lname').value);
+            localStorage.setItem('email', document.getElementById('email').value);
+            localStorage.setItem('password', document.getElementById('password').value);
+            localStorage.setItem('number', document.getElementById('number').value);
+            alert("Done!");
+            window.location.href = 'main.html';
+        }
+    </script>
+</body>
+</html>
