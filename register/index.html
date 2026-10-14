@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      input {
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+      }
+      form {
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex flex-col gap-5 justify-center items-center min-h-screen">
+      <h1 class="text-3xl font-bold">Registration Form</h1>
+
+      <div
+        class="form flex flex-col bg-blue-900 h-auto p-8 rounded-[15px] w-130"
+      >
+        <form id="registrationForm">
+          <label class="text-white">Username</label>
+          <input
+            id="name"
+            type="text"
+            placeholder="Enter your name...."
+            required
+          />
+
+          <label class="text-white">Email adress</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Enter your email...."
+            required
+          />
+
+          <label class="text-white">Phone number</label>
+          <input
+            id="phone"
+            type="tel"
+            placeholder="+8 (102) 412 505"
+            required
+          />
+
+          <label class="text-white">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Create password...."
+            required
+          />
+
+          <button
+            type="submit"
+            class="bg-yellow-200 p-3 mt-3 rounded-[10px] transition hover:bg-yellow-400 text-center"
+          >
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="/register/index.js"></script>
+  </body>
+</html>
