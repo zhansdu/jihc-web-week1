@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MySite - Home</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="logo" href="index.html">MySite</a>
+      <nav class="nav-links">
+        <a class="active" href="index.html">Home</a>
+        <a href="register.html">Register</a>
+        <a href="users.html">Users</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <p class="hero-label">Mountain Club</p>
+            <h1>Explore the Peaks</h1>
+            <p>
+              Join a simple travel community for people who love fresh air,
+              quiet views and weekend adventures in the mountains.
+            </p>
+            <div class="hero-buttons">
+              <button class="btn" id="openModalBtn" type="button">
+                Learn More
+              </button>
+              <a class="btn btn-light" href="register.html">Join Now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal" id="infoModal">
+      <div class="modal-box">
+        <button class="modal-close" id="closeModalBtn" type="button">x</button>
+        <h2>Welcome!</h2>
+        <p>
+          This modal is opened with JavaScript. You can close it by pressing the
+          button, the x symbol, or the dark background.
+        </p>
+        <button class="btn" id="modalOkBtn" type="button">Got it</button>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2026 MySite. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

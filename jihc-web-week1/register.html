@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MySite - Register</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="logo" href="index.html">MySite</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a class="active" href="register.html">Register</a>
+        <a href="users.html">Users</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="main page-center">
+      <section class="form-card">
+        <h1>Create an Account</h1>
+        <form id="registerForm">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" type="text" placeholder="Enter your full name" required />
+
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Enter your email" required />
+
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Enter your password" required />
+
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Confirm your password"
+            required
+          />
+
+          <button class="btn full-width" type="submit">Register</button>
+        </form>
+        <p class="message" id="registerMessage"></p>
+        <p class="small-text">
+          Already have an account?
+          <a href="users.html">Login</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 MySite. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

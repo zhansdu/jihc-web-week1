@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MySite - Users</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="logo" href="index.html">MySite</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="register.html">Register</a>
+        <a class="active" href="users.html">Users</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="main users-layout">
+      <section class="form-card login-card">
+        <h1>Login</h1>
+        <form id="loginForm">
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" type="email" placeholder="Enter your email" required />
+
+          <label for="loginPassword">Password</label>
+          <input
+            id="loginPassword"
+            type="password"
+            placeholder="Enter your password"
+            required
+          />
+
+          <button class="btn full-width" type="submit">Login</button>
+        </form>
+        <p class="message" id="loginMessage"></p>
+        <p class="small-text">
+          Do not have an account?
+          <a href="register.html">Register</a>
+        </p>
+      </section>
+
+      <section class="table-card">
+        <h1>Registered People</h1>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Registered At</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 MySite. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
