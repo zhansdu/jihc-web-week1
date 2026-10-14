@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body{
+        padding-top: 50px;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        padding: 50px 500px;
+    }
+    h1{
+        text-align: center;
+    }
+    p{
+        font-family: sans-serif;
+        font-size: 20px;
+        width: 500px;
+        margin: 0;
+        padding: 5px;
+        padding-left: 0px;
+    }
+    input{
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        width: 500px;
+        margin-bottom: 20px;
+    }
+    .input-password {
+        font: small-caption;
+        font-size: 16px;
+}
+    #loginButton{
+        background-color: black;
+        color: white;
+        font-weight: 600;
+        border: 0;
+        padding: 10px 20px;
+        border-radius: 20px;
+        width: 520px;
+    }
+     
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        border: black 1px solid;
+
+    }
+</style>
+<body>
+    <div class="nav">
+        Hello
+        <p class="menu">☰</p>
+
+    </div>
+    <nav class="pages nav-none">
+        <a href="index.html">Registration</a>
+        <a href="login.html">Login</a>
+        <a href="about.html">About</a>
+    </nav>
+    <h1>Log In</h1>
+    <p>Your email</p>
+    <input type="text" id="inputEmail" placeholder="Type something...">
+    <p>Your password</p>
+    <input type="password" id="inputPassword" class="input-password" placeholder="Type your password...">
+    <button id="loginButton">Log In</button>
+
+    <div class="registered">
+        <h3>Registered Users</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+        </table>
+    </div>
+
+
+
+
+
+    <footer>
+        <p style="text-align: center; margin-top: 20px;">&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+<script>const menu = document.querySelector('.menu');
+    const pages = document.querySelector('.pages');
+
+    menu.addEventListener('click', () => {
+        pages.classList.toggle('nav-none');
+    });
+    const loginButton = document.getElementById('loginButton');
+    window.addEventListener('DOMContentLoaded', function() {
+        const users = localStorage.getItem('users');
+        console.log( JSON.parse(users));
+        if (users){
+            const parsedUsers  = JSON.parse(users);
+
+            
+            for(i=0 ; i<parsedUsers.length; i++){
+                const table = document.querySelector('table');
+                const user = parsedUsers[i];
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${i + 1}</td>
+                    <td>${user.name}</td>
+                    <td>${user.gmail}</td>
+                `;
+                table.appendChild(row);
+            }
+            
+        }
+    
+    
+    })
+
+    const inputEmail = document.getElementById('inputEmail');
+    const inputPassword = document.getElementById('inputPassword');
+    const registeredUsers = document.querySelector('table');
+    const button = document.getElementById('loginButton');
+    button.addEventListener('click', function(){
+        const email = inputEmail.value;
+        const password = inputPassword.value;
+        const users = localStorage.getItem('users');
+        if (users){
+            const parsedUsers  = JSON.parse(users);
+            let foundUser = false;
+            for(i=0 ; i<parsedUsers.length; i++){
+                const user = parsedUsers[i];
+                if(user.gmail === email && user.password === password){
+                    foundUser = true;
+                    break;
+                }
+            }
+            if(foundUser){
+                alert('Login successful!');
+
+            } else {
+                alert('Invalid email or password.');
+            }
+        } else {
+            alert('No registered users found.');
+        }
+    })
+
+        
+    
+    
+    
+    
+    
+    </script>
+</html>

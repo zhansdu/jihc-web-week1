@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .body{
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        padding: 100px 500px;
+        margin: 0;
+        align-items: center;
+    }
+    p{
+        width: 300px;
+        text-align: left;
+        margin: 5px;
+        margin-right: 20px;
+        
+        
+    }
+    input{
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 300px;
+    }
+    #saveButton{
+        background-color: black;
+        color: white;
+        font-weight: 600;
+        border: 0;
+        padding: 10px 20px;
+        border-radius: 20px;
+        width: 320px;
+        margin-top: 20px;
+
+    }
+
+    
+    .popup {
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 35%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        height: 200px;
+    }
+    .popup p {
+        margin: 10px 0;
+        text-align: center;
+        padding-top: 20px;
+    }
+    .close-btn{
+        background-color: black;
+        color: white;
+        font-weight: 600;
+        border: 0;
+        padding: 10px 20px;
+        border-radius: 20px;
+        width: 100px;
+        margin-left: 100px;
+    }
+    #popup {
+        display: none;
+    }
+    .alert {
+        color: red;
+        
+        background-color: rgb(250, 218, 218);
+        padding: 10px;
+        border-radius: 10px;
+        border: 0.5px solid red;
+        display: none;
+    }
+    .divka{
+
+        position: absolute;
+        top: 0;
+        width: 1510px;
+
+        height: 1000px;
+        background-color: rgb(11, 11, 11);
+        opacity: 0.8;
+        display: none;
+z-index: 9998;
+    }
+   
+</style>
+<body>
+ <div class="nav">
+        Hello
+        <p class="menu">☰</p>
+
+    </div>
+    
+    <nav class="pages nav-none">
+        <a href="home.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="about.html">About</a>
+    </nav>
+   
+<div class="body">
+    <h1>User Registration</h1>
+    <p class="alert">Please fill in all fields. </p>
+    <p>your name</p>
+    <input type="text" id="inputName" placeholder="Type something...">
+    <p>your Email</p>
+    <input type="text" id="inputGmail" placeholder="Type something...">
+    <p>your password</p>
+    <input type="password" id="inputPassword" class="input-password" placeholder="Type new password...">
+
+    <button id="saveButton">save</button>
+    <div id="popup" class="popup">
+        <p>Welcome to our team!</p>
+        <p>Now you can log in with your Gmail and password.</p>
+        <button class="close-btn" id="close-btn">Close</button>
+    </div>
+    <div class="divka"></div>
+   </div>
+   <footer>
+    <p style="text-align: center; margin-top: 20px;">&copy; 2024 Your Company. All rights reserved.</p>
+   </footer>
+</body>
+<script>
+    const inputName = document.getElementById('inputName');
+    const inputGmail = document.getElementById('inputGmail');
+    const inputPassword = document.getElementById('inputPassword');
+    const saveButton = document.getElementById('saveButton');
+    const popup = document.getElementById('popup');
+    const closeButton = document.getElementById('close-btn');
+     const menu = document.querySelector('.menu');
+    const pages = document.querySelector('.pages');
+
+    menu.addEventListener('click', () => {
+        pages.classList.toggle('nav-none');
+    });
+    closeButton.addEventListener('click', function(){
+            popup.style.display = 'none';
+            document.querySelector('.divka').style.display = 'none';
+    })
+    
+    saveButton.addEventListener('click', function(){
+       
+        if(inputName.value === '' || inputGmail.value === '' || inputPassword.value === ''){
+            document.querySelector('.alert').style.display = 'block';
+            return;
+        }
+        document.querySelector('.alert').style.display = 'none';
+
+        const name = inputName.value;
+        const gmail = inputGmail.value;
+        const password = inputPassword.value;
+        const person = {
+            name: name,
+            gmail: gmail,
+            password: password
+        }
+        const savedData = localStorage.getItem('users');
+        let users;
+        if (savedData === null) {
+        users = [];
+        } else {
+             users = JSON.parse(savedData);
+        }
+        users.push(person);
+        console.log(localStorage);
+        localStorage.setItem('users', JSON.stringify(users));
+
+
+        popup.style.display = 'block';
+        if (popup.style.display === 'block') {
+            inputName.value = '';
+            inputGmail.value = '';
+            inputPassword.value = '';
+            document.querySelector('.alert').style.display = 'none';
+            document.querySelector('.divka').style.display = 'block';
+            
+
+        }
+
+       
+
+
+    })
+</script>   
+</html>

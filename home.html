@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body{
+        padding-top: 250px;
+        padding-left: 100px;
+        padding-right: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;       
+    }
+    img{
+        width: 500px;
+        height: 300px;
+        border-radius: 10px;
+    }
+    h1{
+        font-family: sans-serif;
+        font-size: 40px;
+    }
+    p{
+        font-family: sans-serif;
+        font-size: 20px;
+        width: 500px;
+    }
+   
+</style>
+<body>
+    <div class="nav">
+        Hello
+        <p class="menu">☰</p>
+
+    </div>
+    <div class="left">
+    <h1>Welcome to My Website</h1>
+    <p>This is a simple 4-page website built with HTML, CSS, and JavaScript.
+
+Use the menu above to create an account, log in, or read more about this project.</p></div>
+<img src="https://i.pinimg.com/1200x/ac/af/a1/acafa1dc49e9aa4d839b8c995b11b7a4.jpg" alt="">
+    <nav class="pages nav-none">
+        <a href="index.html">Registration</a>
+        <a href="login.html">Login</a>
+        <a href="about.html">About</a>
+    </nav>
+    <footer>
+        <p style="text-align: center; margin-top: 20px;">&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+    
+    
+</body>
+<script>
+    const menu = document.querySelector('.menu');
+    const pages = document.querySelector('.pages');
+
+    menu.addEventListener('click', () => {
+        pages.classList.toggle('nav-none');
+    });
+</script>
+</html>
